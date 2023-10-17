@@ -8,6 +8,4 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./app /code/app
 
-EXPOSE 8000
-
-CMD ["uvicorn", "backend:app", "--reload"]
+CMD ["uvicorn", "app.backend:app", "--host", "0.0.0.0", "--reload", "--port", "80"]
