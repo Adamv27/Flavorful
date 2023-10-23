@@ -1,34 +1,27 @@
 const resultsContainer = document.getElementById('results-container')
 
 
+const toggleSaveRecipe = (recipeID) => {
+    let recipeCard = document.getElementById(recipeID);
+    let saveButton = recipeCard.querySelector(".save-button"); 
+    saveButton.classList.toggle("saved");
+    console.log(saveButton);
+}
+
+
 const displayRecipes = (recipes) => {
-    let card, overlay, img, title, link;
+    let card; 
     for (let recipe of recipes) {
-        card = document.createElement('div');
-        card.classList.add('card', 'recipe');
+        // Clone base recipe card tempalte
+        card = document.querySelector("div[data-type='template']").cloneNode(true);
+        card.id = recipe.id;
+        card.querySelector("img").src = recipe.image;
+        card.querySelector(".card-title").textContent = recipe.title;
+        card.style.display = "flex";
+        card.querySelector(".save-button").addEventListener('click', () => {
+            toggleSaveRecipe(recipe.id);
+        });
 
-        img = document.createElement('img');
-        img.src = recipe.image;
-        img.alt = "";
-        card.appendChild(img);
-        
-        overlay = document.createElement('div');
-        overlay.classList.add('overlay');
-
-        title = document.createElement('h4');
-        title.classList.add('card-title');
-        title.textContent = recipe.title;
-        
-        overlay.appendChild(title); 
-        card.appendChild(overlay);
-        
-        link = document.createElement('a');
-        link.classList.add('btn', 'btn-primary');
-        link.textContent = 'View Recipe';
-        
-        //cardBody.appendChild(title);
-        //cardBody.appendChild(link);      
-        //card.appendChild(cardBody);
         resultsContainer.appendChild(card);
     }
 }
