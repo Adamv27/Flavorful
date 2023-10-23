@@ -1,29 +1,40 @@
 const resultsContainer = document.getElementById('results-container')
 
 
-const display_recipes = (recipes) => {
-    let div;
-    let img; 
-    let title;
+const displayRecipes = (recipes) => {
+    let card, cardBody, img, title, link;
     for (let recipe of recipes) {
-        div = document.createElement('div');
-        img = document.createElement('img');
-        title = document.createElement('p');
+        card = document.createElement('div');
+        card.classList.add('card', 'recipe');
 
+        img = document.createElement('img');
         img.src = recipe.image;
+        img.alt = "";
+        card.appendChild(img);
+        
+        cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        title = document.createElement('h4');
+        title.classList.add('card-title');
         title.textContent = recipe.title;
-        div.appendChild(img);
-        div.appendChild(title);
-        resultsContainer.appendChild(div)
-        console.log(recipe)      
+        
+        link = document.createElement('a');
+        link.classList.add('btn', 'btn-primary');
+        link.textContent = 'View Recipe';
+        
+        cardBody.appendChild(title);
+        cardBody.appendChild(link);      
+        card.appendChild(cardBody);
+        resultsContainer.appendChild(card);
     }
 }
 
 
-const search_for_recipes = async () => {
+const searchForRecipes = async () => {
     const response = await fetch('../script/recipe_request.json')
     return response.json()
 }
 
 
-search_for_recipes().then((data) => display_recipes(data.results))
+searchForRecipes().then((data) => displayRecipes(data.results))

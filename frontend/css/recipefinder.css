@@ -1,0 +1,40 @@
+#results-container {
+  margin: 2em;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+}
+
+.card {
+  border: none;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+
+.card-title {
+  font-size: 20px;
+}
+
+.recipe {
+  width: 18rem;
+  border-radius: 16px;
+  color: white;
+}
+
+.recipe img {
+  border-radius: 16px 16px 0 0; 
+}
+
+.card-body {
+  background-color: var(--brown);
+  border-radius: 0 0 16px 16px;
+}
+
+.recipe a {
+  background-color: var(--green);
+  border: none;
+}
