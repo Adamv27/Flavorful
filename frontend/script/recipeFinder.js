@@ -2,7 +2,7 @@ const resultsContainer = document.getElementById('results-container')
 
 
 const displayRecipes = (recipes) => {
-    let card, cardBody, img, title, link;
+    let card, overlay, img, title, link;
     for (let recipe of recipes) {
         card = document.createElement('div');
         card.classList.add('card', 'recipe');
@@ -12,20 +12,23 @@ const displayRecipes = (recipes) => {
         img.alt = "";
         card.appendChild(img);
         
-        cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
+        overlay = document.createElement('div');
+        overlay.classList.add('overlay');
 
         title = document.createElement('h4');
         title.classList.add('card-title');
         title.textContent = recipe.title;
         
+        overlay.appendChild(title); 
+        card.appendChild(overlay);
+        
         link = document.createElement('a');
         link.classList.add('btn', 'btn-primary');
         link.textContent = 'View Recipe';
         
-        cardBody.appendChild(title);
-        cardBody.appendChild(link);      
-        card.appendChild(cardBody);
+        //cardBody.appendChild(title);
+        //cardBody.appendChild(link);      
+        //card.appendChild(cardBody);
         resultsContainer.appendChild(card);
     }
 }
