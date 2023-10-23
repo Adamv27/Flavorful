@@ -1,3 +1,36 @@
+#option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-button-container {
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.option-button {
+  border: none;
+  height: 5rem;
+  border-radius: 8px;
+  background-color: var(--green);
+  color: white;
+}
+
+.option {
+  display: none;
+}
+
+.option.current {
+  display: inline;
+}
+
+
 #results-container {
   margin: 2em;
   display: grid;
@@ -7,7 +40,7 @@
 
 .card {
   border: none;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .card:hover {
@@ -33,11 +66,6 @@
 .card-body {
   background-color: var(--brown);
   border-radius: 0 0 16px 16px;
-}
-
-.recipe a {
-  background-color: var(--green);
-  border: none;
 }
 
 .card-title {
