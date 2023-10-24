@@ -9,10 +9,6 @@ const toggleSaveRecipe = (recipeID) => {
 
 
 const displayRecipes = (recipes) => {
-    let resultsTitle = document.createElement("h2");
-    resultsTitle.textContent = "Results";
-    resultsContainer.appendChild(resultsTitle);
-
     let card; 
     for (let recipe of recipes) {
         // Clone base recipe card tempalte
