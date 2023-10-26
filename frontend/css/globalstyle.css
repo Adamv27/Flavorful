@@ -26,6 +26,10 @@ body {
   color: var(--tan);
 }
 
+.navbar-brand {
+  margin-left: 1.5rem; 
+}
+
 .navbar-toggler {
   border: none;
 }
