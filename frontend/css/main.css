@@ -35,9 +35,9 @@
   background-color: var(--light-brown);
   
   display: flex;
-  justify-content: center;
   align-items: center;
   text-decoration: none;
+  justify-content: space-evenly;
 }
 
 #find-recipe-container {
