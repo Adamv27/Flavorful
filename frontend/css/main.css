@@ -11,6 +11,7 @@
 
 .link-button {
   width: 10rem;
+  height: 2rem;
   color: black;
   border-radius: 8px;
   background-color: var(--light-brown);
