@@ -17,3 +17,23 @@ body {
   background-color: var(--tan);
 }
 
+
+.navbar {
+  background-color: var(--dark-green);
+}
+
+.navbar h1, .navbar .nav-link, .navbar-toggler-icon {
+  color: var(--tan);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:active {
+  outline: none;
+  box-shadow: none;
+}
+
