@@ -35,16 +35,17 @@
     <main>
       <div id="option-container">
         <div id="time-option" class="option current">
-          <h2>How long would you like to spend cooking?</h2>
+          <h2>Maximum time you would like to spend cooking?</h2>
           <div class="option-button-container">
-            <button class="option-button" onclick="nextOption(setTimeToCook, 25)">Not too long <p>15-25 minutes</button> 
+            <button class="option-button" onclick="nextOption(setTimeToCook, 25)">
+              <p>Not too long</p><small>15-25 minutes</small></button> 
             <button class="option-button" onclick="nextOption(setTimeToCook, 40)">A medium amount</button> 
             <button class="option-button" onclick="nextOption(setTimeToCook, 120)">A while <p>1+ hour</button> 
             <button class="option-button">I don't Care</button>
           </div>
         </div>
         <div id="calories-option" class="option">
-          <h2>Calories</h2>
+          <label>Maximum calories per serving</label>
           <input type="range" class="form-range" min="25" max="1000" onchange="setMaxCalories(this.value)">
           <button id="maxCaloriesButton" onclick="nextOption()">500</button>
         </div>
@@ -61,7 +62,7 @@
         </div>
         <div id="options-nav">
           <button onclick="prevOption()">Back</button>
-          <button onclick="nextOption()">Skip</button>
+          <button onclick="nextOption()">Next</button>
         </div>
       </div>
       
