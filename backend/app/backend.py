@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-import model
+from app import model
 from app.config import engine
 from app.routers import recipes
 from app.routers import users
