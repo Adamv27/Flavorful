@@ -5,6 +5,23 @@ from pydantic import BaseModel, Field
 T = TypeVar("T")
 
 
+class UserSchema(BaseModel):
+    username: Optional[str] = None
+    password: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+
 class RecipeSchema(BaseModel):
     id: Optional[int] = None
     title: Optional[str] = None
