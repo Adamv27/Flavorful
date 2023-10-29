@@ -1,15 +1,12 @@
-import os
-from datetime import datetime, timedelta
-from typing  import Annotated
-
-from fastapi import Depends, APIRouter, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import JWTError, JWTError
-from passlib.context import CryptContext
-from pydantic import BaseModel
-from dotenv import load_dotenv
-
-load_dotenv()
+from typing import Annotated
+from datetime import timedelta
+from app.database import get_db
+from sqlalchemy.orm import Session
+from app.exceptions import InvalidLoginException
+from fastapi import APIRouter, Depends
+from fastapi.security import OAuth2PasswordRequestForm
+from app.schemas import Token, UserSchema
+from app.login import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user
 
 
 router = APIRouter(
@@ -18,40 +15,22 @@ router = APIRouter(
 )
 
 
-JWT_KEY = os.getenv("JWT_KEY")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
+@router.post("/token", response_model=Token)
+async def login_for_access_token(
+    form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
+    db: Session = Depends(get_db)
+):
+    user = authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise InvalidLoginException
+
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user.username}, expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
-
-class TokenData(BaseModel):
-    username: str | None = None
-
-
-class User(BaseModel):
-    username: str
-    email: str
-    full_name: str | None = None
-    disabled: bool | None = None
-
-
-class UserInDB(User):
-    hashed_password: str
-
-
-password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-
-def verify_password(plain_password, hashed_password):
-    return password_context.verify(plain_password, hashed_password)
-
-
-def get_password_hash(password):
-    return password_context.hash(password)
-
-
+@router.get("/me")
+async def read_users_me(current_user: Annotated[UserSchema, Depends(get_current_user)]):
+    return current_user

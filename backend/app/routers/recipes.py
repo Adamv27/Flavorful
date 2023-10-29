@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends
 from dotenv import load_dotenv
 
 from sqlalchemy.orm import Session
-from app.config import SessionLocal
 from app.schemas import RequestRecipe, Response
 from app import database
+from app.database import get_db
 
 
 load_dotenv()
@@ -21,13 +21,6 @@ router = APIRouter(
     tags=["recipes"]
 )
 
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("/create")
