@@ -47,7 +47,7 @@ async def get_by_id(id: int, db: Session = Depends(get_db)):
     return Response(code=200, status="Ok", message="Success get data", result=_recipe).dict(exclude_none=True)
 
 
-@router.post("/update")
+@router.patch("/update")
 async def update_recipe(request: RequestRecipe, db: Session = Depends(get_db)):
     _recipe = database.update_recipe(db,
                                      recipe_id=request.parameter.id,
