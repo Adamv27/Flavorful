@@ -1,0 +1,3 @@
+
+class RecipeDoesNotExistError(Exception):
+    pass
