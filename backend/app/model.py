@@ -3,8 +3,8 @@ from app.config import Base
 
 
 class Recipe(Base):
-    __tablename__ = "recipe"
+    __tablename__ = "recipes"
 
-    id = Colummn(Integer, primary_key=True)
-    title=Column(String)
-    image=Column(String)
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    image_url = Column(String)
