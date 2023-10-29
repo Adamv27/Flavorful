@@ -1,26 +1,25 @@
-from typing import List, Optional, Generic, TypeVar
+from typing import Optional, Generic, TypeVar
 from pydantic import BaseModel, Field
-from pydantic.generics import GenericModel
 
 
 T = TypeVar("T")
 
 
 class RecipeSchema(BaseModel):
-    id: Optional[int]=None
-    title: Optional[str]=None
-    image: Optional[str]=None
+    id: Optional[int] = None
+    title: Optional[str] = None
+    image_url: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class RequestRecipe(BaseModel):
-    parameter: RecipeSchema = Field(...)
+    recipe: RecipeSchema = Field(...)
 
 
-class Response (GenericModel, Generic[T]):
-    code: str
+class Response(BaseModel, Generic[T]):
+    code: int
     status: str
     message: str
-    result: Optional[T]
+    result: Optional[T] = None

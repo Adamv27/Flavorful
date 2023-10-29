@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.model import Recipe
 from app.schemas import RecipeSchema
+from app.exceptions import RecipeDoesNotExistError
 
 
 def get_recipe(db:Session, skip:int=0, limit:int=100):
@@ -12,7 +13,7 @@ def get_recipe_by_id(db:Session, recipe_id: int):
 
 
 def create_recipe(db:Session, recipe: RecipeSchema):
-    _recipe = Recipe(title=recipe.title, image=recipe.title)
+    _recipe = Recipe(id=recipe.id, title=recipe.title, image_url=recipe.image_url)
     db.add(_recipe)
     db.commit()
     db.refresh(_recipe)
@@ -25,12 +26,12 @@ def remove_recipe(db:Session, recipe_id:int):
     db.commit()
 
 
-def update_recipe(db:Session, recipe_id:int, title:str, image:str):
+def update_recipe(db:Session, recipe_id:int, title:str, image_url:str):
     _recipe = get_recipe_by_id(db=db, recipe_id=recipe_id)
+    if _recipe is None:
+        raise RecipeDoesNotExistError
     _recipe.title = title
-    _recipe.image = image
+    _recipe.image_url = image_url
     db.commit()
     db.refresh(_recipe)
     return _recipe
-
-
