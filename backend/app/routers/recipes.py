@@ -8,6 +8,7 @@ from app.config import SessionLocal
 from app.schemas import RequestRecipe, Response
 from app import database
 
+
 load_dotenv()
 
 API_KEY = os.getenv('SPOONACULAR_API_KEY')
@@ -31,13 +32,13 @@ def get_db():
 
 @router.post("/create")
 async def create(request: RequestRecipe, db: Session = Depends(get_db)):
-    database.create_recipe(db, recipe=request.parameter)
+    database.create_recipe(db, recipe=request.recipe)
     return Response(code=200, status="Ok", message="Recipe created successfully").dict(exclude_none=True)
 
 
 @router.get("/")
 async def get(db: Session = Depends(get_db)):
-    _recipe = database.get_recipe(db)
+    _recipe = database.get_recipe(db, 0, 100)
     return Response(code=200, status="Ok", message="Succeessful Fetch All data", result=_recipe)
 
 
@@ -47,16 +48,17 @@ async def get_by_id(id: int, db: Session = Depends(get_db)):
     return Response(code=200, status="Ok", message="Success get data", result=_recipe).dict(exclude_none=True)
 
 
-@router.patch("/update")
+@router.post("/update")
 async def update_recipe(request: RequestRecipe, db: Session = Depends(get_db)):
     _recipe = database.update_recipe(db,
-                                     recipe_id=request.parameter.id,
-                                     title=request.parameter.title,
-                                     image=request.parameter.image)
-    return Response(code=200, status="Ok", message="Success update recipe", result=_recipe)
+                                     recipe_id=request.recipe.id,
+                                     title=request.recipe.title,
+                                     image_url=request.recipe.image_url)
+
+    return Response(code=200, status="Ok", message="Success update recipe", result=_recipe).dict(exclude_none=True)
 
 
-@router.delete("/{id}")
+@router.delete("/delete/{id}")
 async def delete(id: int, db: Session = Depends(get_db)):
     database.remove_recipe(db, recipe_id=id)
     return Response(code=200, status="Ok", message="Success Delete recipe").dict(exclude_none=True)
