@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app import model
+from app import models
 from app.config import engine
 from app.routers import recipes
 from app.routers import users
@@ -8,7 +8,7 @@ from app.exception_handlers import integrity_error_handler, recipe_does_not_exis
 from sqlalchemy.exc import IntegrityError
 from app.exceptions import RecipeDoesNotExistError
 
-model.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
