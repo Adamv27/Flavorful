@@ -1,0 +1,66 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  width: auto;
+  height: 70%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-form {
+  background-color: white;
+  width: 75%;
+  padding: 2rem;
+  border-radius: 12px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+#login-form > div, button, small {
+  margin-top: 0.5rem;
+}
+
+#login-form > button {
+  border: none;
+  border-radius: 100px;
+  background-color: var(--brown);
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.control {
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+
+.control:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--brown); 
+}
+
+
+.form-check-label {
+  font-size: small;
+}
+
+
+small {
+  color: #595959;
+}
+
+small > a {
+  color: var(--brown);
+  text-decoration: none;
+}
