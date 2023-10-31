@@ -44,6 +44,10 @@
 
 
 @media (min-width: 600px) {
+  #found-something-before {
+    color: var(--tan);
+  }
+
   #my-recipe-container {
     margin-top: 0;
   }
@@ -61,11 +65,12 @@
   #main-grid {
     width: 100%;
     height: 100%;
+    
+    margin: 5rem 2rem 0 2rem;
 
-    margin-top: 5rem;
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
     grid-template-areas:
       "recipe-finder"
@@ -78,7 +83,6 @@
     background-color: var(--green);
     width: 100%;
     height: 10rem;
-
     padding: 1rem;
     border-radius: 8px;
   }
