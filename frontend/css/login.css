@@ -13,7 +13,7 @@ main {
 
 #login-form {
   background-color: white;
-  width: 75%;
+  width: min(75%, 30rem);
   padding: 2rem;
   border-radius: 12px;
   
@@ -28,7 +28,7 @@ main {
 #login-form > button {
   border: none;
   border-radius: 100px;
-  background-color: var(--brown);
+  background-color: var(--green);
 }
 
 
@@ -47,7 +47,7 @@ main {
 .control:focus {
   outline: none;
   border: none;
-  border-bottom: 2px solid var(--brown); 
+  border-bottom: 2px solid var(--dark-green); 
 }
 
 
@@ -61,6 +61,6 @@ small {
 }
 
 small > a {
-  color: var(--brown);
+  color: var(--green);
   text-decoration: none;
 }
