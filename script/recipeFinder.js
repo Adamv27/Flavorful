@@ -50,18 +50,15 @@ const hideFinalView = () => {
 /*   
 * Given two element IDs, hide one and display the other.
 */
-const toggleOptionViews = (prevID, newID) => {
-    let prevOptionView = document.getElementById(prevID);
-    prevOptionView.classList.remove('current');
-    let newOptionView = document.getElementById(newID);
-    newOptionView.classList.add('current');
+const toggleOptionViews = (prevOption, newOption) => {
+    prevOption.classList.remove('current');
+    newOption.classList.add('current');
 }
 
 
 
-// IDs of the option view containers in the order they are displayed
-let optionIDs = ["time-option", "calories-option", "cuisine-option", "advanced-options"];
 let currentOptionIndex = 0;
+const optionsContainer = document.getElementById("option-container").children;
 
 let options = {
     maxCalories: 1000,
@@ -89,23 +86,23 @@ const addCuisinType = cuisineType => {
 
 const nextOption = (setValue = null, value = null) => {
     setValue?.(value);
-
-    if (currentOptionIndex + 1 < optionIDs.length) {
-        let prevID = optionIDs[currentOptionIndex];
-        currentOptionIndex += 1;
-        let newID = optionIDs[currentOptionIndex];
-        toggleOptionViews(prevID, newID)
+    
+    const oldOption = optionsContainer.item(currentOptionIndex);
+    const newOption = optionsContainer.item(currentOptionIndex + 1);
+    if (newOption && newOption.id !== "options-nav") {
+        currentOptionIndex++;
+        toggleOptionViews(oldOption, newOption);
     }
 }
 
 const prevOption = () => {
-    if (currentOptionIndex - 1 >= 0) {
-        let prevID = optionIDs[currentOptionIndex];
-        currentOptionIndex -= 1;
-        let newID = optionIDs[currentOptionIndex];
-        toggleOptionViews(prevID, newID);
+    const oldOption = optionsContainer.item(currentOptionIndex);
+    const newOption = optionsContainer.item(currentOptionIndex -1);
+    if (newOption) {
+        currentOptionIndex--;
+        toggleOptionViews(oldOption, newOption);
     }
-}
+ }
 
 
 
