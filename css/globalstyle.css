@@ -23,6 +23,7 @@ body {
 }
 
 .navbar h1, .navbar .nav-link, .navbar-toggler-icon {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   color: var(--tan);
 }
 
