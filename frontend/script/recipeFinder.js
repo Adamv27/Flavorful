@@ -3,8 +3,14 @@ const resultsContainer = document.getElementById('results-container')
 
 const toggleSaveRecipe = (recipeID) => {
     let recipeCard = document.getElementById(recipeID);
-    let saveButton = recipeCard.querySelector(".save-button"); 
-    saveButton.classList.toggle("saved");
+    let bookmarkIcon = recipeCard.querySelector(".bookmark-image"); 
+    if (bookmarkIcon.classList.contains("saved")) {
+        bookmarkIcon.classList.remove("saved");
+        bookmarkIcon.src = "../images/bookmark-off.svg";
+    } else {
+        bookmarkIcon.classList.add("saved");
+        bookmarkIcon.src ="../images/bookmark-on.svg";
+    }
 }
 
 

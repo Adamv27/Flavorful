@@ -83,7 +83,7 @@
   color: white;
 }
 
-.recipe img {
+.recipe > img {
   border-radius: 16px;
   height: 12rem;
 }
@@ -118,14 +118,12 @@
   color: red;
   border: none;
 
-  background-image: url('../images/bookmark-off.svg');
   background-size: 1rem; 
   background-position: center center;
   background-repeat: no-repeat;
 }
 
-.save-button.saved {
-  background-image: url('../images/bookmark-on.svg');
+.bookmark-image {
+  width: 1rem;
 }
-
 

@@ -45,14 +45,14 @@
           </div>
         </div>
         <div id="calories-option" class="option">
-          <label>Maximum calories per serving</label>
-          <input type="range" class="form-range" min="25" max="1000" onchange="setMaxCalories(this.value)">
+          <label for="max-calories-range">Maximum calories per serving</label>
+          <input id="max-calories-range" type="range" class="form-range" min="25" max="1000" onchange="setMaxCalories(this.value)">
           <button id="maxCaloriesButton" onclick="nextOption()">500</button>
         </div>
         <div id="cuisine-option" class="option">
-          <p>Cuisine</p>
           <div class="input-box">
-            <input type="text" class="form-control">
+            <label for="cuisine-search-bar">Cuisine</label>
+            <input id="cuisine-search-bar" type="text" class="form-control">
             <i class="fa fa-search"></i>                    
           </div>
         </div>
@@ -71,7 +71,9 @@
         <div style="display: none" data-type="template" class="card recipe">
           <img alt="template image" src="../images/cooking.svg"> 
           <div class="overlay">
-            <button class="save-button"></button>
+            <button class="save-button">
+              <img class="bookmark-image" src="../images/bookmark-off.svg" alt="Bookmark icon"> 
+            </button>
             <h4 class="card-title">Template Title</h4>
           </div>
         </div>
