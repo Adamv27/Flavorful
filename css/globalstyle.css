@@ -49,6 +49,7 @@ body {
 }
 
 
+/* General styles */
 
 .flat {
   border: none;
@@ -80,15 +81,13 @@ body {
 }
 
 
-/* Search bar styling */
-
+/* Search bar widget */
 
 .search-bar {
   height: 2.5rem;
   padding: 1.5rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
 
 .search-bar-icon {
   position: relative;
