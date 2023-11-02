@@ -6,9 +6,6 @@ body {
 main {
   width: auto;
   height: 70%; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #login-form {
@@ -16,7 +13,6 @@ main {
   width: min(75%, 30rem);
   padding: 2rem;
   border-radius: 12px;
-  
   display: flex;
   flex-direction: column;
 }
@@ -26,7 +22,6 @@ main {
 }
 
 #login-form > button {
-  border: none;
   border-radius: 100px;
   background-color: var(--green);
 }
@@ -40,13 +35,10 @@ main {
 
 .control {
   padding: 0.5rem;
-  border: none;
   border-bottom: 2px solid grey;
 }
 
 .control:focus {
-  outline: none;
-  border: none;
   border-bottom: 2px solid var(--dark-green); 
 }
 

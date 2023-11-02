@@ -1,6 +1,5 @@
 #option-container {
   margin: 5rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,13 +74,11 @@ input[type="range"]::-webkit-slider-thumb:active {
   right: 13px;
   top: 15px;
   color: #ced4da;
-
 }
 
 .form-control{
-
   height: 50px;
-  background-color:#eeeeee69;
+  background-color: #eeeeee69;
 }
 
 .form-control:focus{
@@ -93,7 +90,7 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 
 #results-container {
-  margin: 2em;
+  margin: 2rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
@@ -125,10 +122,6 @@ input[type="range"]::-webkit-slider-thumb:active {
   height: 12rem;
 }
 
-.card-body {
-  background-color: var(--brown);
-  border-radius: 0 0 16px 16px;
-}
 
 .card-title {
   position: absolute;
@@ -152,12 +145,11 @@ input[type="range"]::-webkit-slider-thumb:active {
   border-radius: 50%;
   right: 0;
   margin: 0.5rem;
-  color: red;
   border: none;
 
-  background-size: 1rem; 
-  background-position: center center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
 .bookmark-image {

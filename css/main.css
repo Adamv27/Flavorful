@@ -9,16 +9,12 @@
 }
 
 
-.link-button {
+.content-container .link-button {
   width: 10rem;
   height: 2rem;
   color: white;
   border-radius: 8px;
   background-color: var(--light-brown);
-  
-  display: flex;
-  align-items: center;
-  text-decoration: none;
   justify-content: space-evenly;
 }
 
@@ -56,11 +52,11 @@
 }
 
 @media (min-width: 600px) {
-  .page-title, #found-something-before {
+  .page-title, #found-something-before, .content-container {
     color: var(--green);
   }
 
-  .link-button {
+  .content-container .link-button {
     background-color: var(--green);
   }
 
@@ -72,12 +68,7 @@
     display: none;
   } 
 
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+   
   #main-grid {
     width: 100%;
     height: 100%;
@@ -98,8 +89,6 @@
     height: 15rem;
     padding: 1rem;
     border-radius: 8px;
-    color: var(--green);
-
     display: flex;
     justify-content: space-between;
   }
