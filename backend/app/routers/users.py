@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.exceptions import InvalidLoginException
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from app.schemas import Token, UserSchema
+from app.schemas import Token, UserSchema, RegisterUserSchema
 from app.login import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user
 
 
@@ -28,9 +28,15 @@ async def login_for_access_token(
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
+
     return {"access_token": access_token, "token_type": "bearer"}
 
 
 @router.get("/me")
 async def read_users_me(current_user: Annotated[UserSchema, Depends(get_current_user)]):
     return current_user
+
+
+@router.post("/register")
+async def register_new_user(new_user: Annotated[RegisterUserSchema, Depends()]):
+    return {"message": f"REGISTER: {new_user.username} {new_user.password}"}

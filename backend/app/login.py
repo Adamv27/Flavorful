@@ -5,7 +5,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from app.schemas import UserSchema, Token, TokenData
+from app.schemas import UserSchema, Token, TokenData, RegisterUserSchema
 from app.database import get_user_by_username, get_db
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
@@ -69,3 +69,8 @@ async def get_current_user(
     if user is None:
         raise CredentialsException
     return user
+
+
+
+def add_user(new_user: RegisterUserSchema):
+    pass

@@ -13,6 +13,10 @@ class UserSchema(BaseModel):
         from_attributes = True
 
 
+class RegisterUserSchema(UserSchema):
+    confirm_password: Optional[str] = None
+
+
 class Token(BaseModel):
     access_token: str
     token_type: str
