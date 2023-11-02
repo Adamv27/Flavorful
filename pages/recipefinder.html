@@ -34,27 +34,32 @@
     </nav>
     
     <main>
-      <div id="option-container">
+      <div id="option-container" class="center-content">
         <div id="time-option" class="option current">
           <h2>Maximum time you would like to spend cooking?</h2>
           <div class="option-button-container">
-            <button class="option-button" onclick="nextOption(setTimeToCook, 25)">
+            <button class="option-button flat" onclick="nextOption(setTimeToCook, 25)">
               Not too long<br><small>15-30 minutes</small></button> 
-            <button class="option-button" onclick="nextOption(setTimeToCook, 40)">A medium amount <br>30-60 minutes</button> 
-            <button class="option-button" onclick="nextOption(setTimeToCook, 120)">A while<br> 1+ hour</button> 
-            <button class="option-button">I don't Care</button>
+            <button class="option-button flat" onclick="nextOption(setTimeToCook, 40)">A medium amount <br>30-60 minutes</button> 
+            <button class="option-button flat" onclick="nextOption(setTimeToCook, 120)">A while<br> 1+ hour</button> 
+            <button class="option-button flat">I don't Care</button>
           </div>
         </div>
         <div id="calories-option" class="option">
           <label for="max-calories-range">Maximum calories per serving</label>
           <span id="calorie-range-display">500</span>
-          <input id="max-calories-range" type="range" class="form-range" min="0" max="1000" oninput="updateRangeDisplay(this.value)">
+          <input id="max-calories-range" type="range" class="form-range full-round" min="0" max="1000" oninput="updateRangeDisplay(this.value)">
         </div>
         <div id="cuisine-option" class="option">
           <div class="input-box">
             <label for="cuisine-search-bar">Cuisine</label>
-            <input id="cuisine-search-bar" type="text" class="form-control">
-            <i class="fa fa-search"></i>                    
+            
+            <div id="input-container" class="center-content">
+              <input type="text" id="recipe-input" class="search-bar flat full-round" placeholder="Type to search" />
+              <button id="search-recipes" class="search-bar-icon flat center-content full-round">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>  
           </div>
         </div>
         <div id="advanced-options" class="option">
@@ -69,10 +74,10 @@
       
       <div id="results-container">
         <!-- Recipe card template -->
-        <div style="display: none" data-type="template" class="card recipe">
+        <div style="display: none" data-type="template" class="card recipe semi-round">
           <img alt="template image" src="../images/cooking.svg"> 
-          <div class="overlay">
-            <button class="save-button">
+          <div class="overlay full-size semi-round">
+            <button class="save-button flat full-round center-content">
               <img class="bookmark-image" src="../images/bookmark-off.svg" alt="Bookmark icon"> 
             </button>
             <h4 class="card-title">Template Title</h4>
