@@ -1,9 +1,45 @@
 #option-container {
+  margin: 5rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+#calories-option {
+  text-align: center;
+  max-width: 30rem;
+}
+
+#calories-option > label {
+  width: 100%;
+  font-size: xx-large;
+}
+
+#max-calories-range {
+  background-color: white;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 50px;
+
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: lightgray;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: var(--brown);
+}
+
+input[type="range"]::-webkit-slider-thumb:focus,
+input[type="range"]::-webkit-slider-thumb:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
 
 .option-button-container {
   padding: 20px;
@@ -53,6 +89,7 @@
   box-shadow: none;
   border-color: #eee;
 }
+
 
 
 #results-container {

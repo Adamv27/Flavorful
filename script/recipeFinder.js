@@ -72,7 +72,7 @@ const setTimeToCook = time => {
 
 const setMaxCalories = calories => {
     options.maxCalories = calories;
-    document.getElementById("maxCaloriesButton").textContent = calories;
+    document.getElementById("calorie-range-display").textContent = calories;
 }
 
 const removeCuisineType = cuisineType => {
@@ -104,5 +104,9 @@ const prevOption = () => {
     }
  }
 
+
+const updateRangeDisplay = value => {
+    document.getElementById("calorie-range-display").textContent = value;
+}
 
 
