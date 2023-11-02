@@ -49,6 +49,12 @@ body {
 }
 
 
+.current-page {
+  font-weight: bold;
+  color: white;
+}
+
+
 /* General styles */
 
 .flat {
