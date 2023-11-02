@@ -47,8 +47,8 @@
         </div>
         <div id="calories-option" class="option">
           <label for="max-calories-range">Maximum calories per serving</label>
-          <input id="max-calories-range" type="range" class="form-range" min="25" max="1000" onchange="setMaxCalories(this.value)">
-          <button id="maxCaloriesButton" onclick="nextOption()">500</button>
+          <span id="calorie-range-display">500</span>
+          <input id="max-calories-range" type="range" class="form-range" min="0" max="1000" oninput="updateRangeDisplay(this.value)">
         </div>
         <div id="cuisine-option" class="option">
           <div class="input-box">
