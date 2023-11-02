@@ -1,0 +1,36 @@
+#input-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+#recipe-input, .search-icon {
+  border: none;
+  border-radius: 50px;
+}
+
+#recipe-input {
+  outline: none;
+  width: min(70%, 25rem);
+  height: 2.5rem;
+  padding: 1.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.fa.fa-search {
+  color: white;
+}
+
+#search-recipes {
+  position: relative;
+  right: 2.5rem;
+  align-self: center;
+  border: none;
+  cursor: pointer;
+  
+  background-color: var(--green);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50px;
+}
