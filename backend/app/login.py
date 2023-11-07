@@ -72,5 +72,5 @@ async def get_current_user(
 
 
 
-def add_user(new_user: RegisterUserSchema):
+def add_user(db: Session,  new_user: RegisterUserSchema):
     pass

@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.exceptions import InvalidLoginException
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.responses import JSONResponse
 from app.schemas import Token, UserSchema, RegisterUserSchema
 from app.login import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user
 
@@ -38,5 +39,9 @@ async def read_users_me(current_user: Annotated[UserSchema, Depends(get_current_
 
 
 @router.post("/register")
-async def register_new_user(new_user: Annotated[RegisterUserSchema, Depends()]):
-    return {"message": f"REGISTER: {new_user.username} {new_user.password}"}
+async def register_new_user(
+    new_user: Annotated[RegisterUserSchema, Depends()],
+    db: Annotated[Session, Depends(get_db)]
+):
+    return JSONResponse(content=f"Registered: {new_user.username} {new_user.password}",
+                        headers={"Access-Control-Allow-Origin": "http://127.0.0.1:8080"})
