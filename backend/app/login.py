@@ -71,6 +71,12 @@ async def get_current_user(
     return user
 
 
+def verify_new_user(new_user: RegisterUserSchema):
+    if len(new_user.username) < 3 or len(new_user.password) < 5:
+        return False
 
-def add_user(db: Session,  new_user: RegisterUserSchema):
-    pass
+    if new_user.password != new_user.confirm_password:
+        return False
+
+    return True
+

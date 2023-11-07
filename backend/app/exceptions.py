@@ -5,7 +5,7 @@ class RecipeDoesNotExistError(Exception):
     pass
 
 
-class InvalidLoginException(Exception):
+class InvalidLoginError(Exception):
     pass
 
 
@@ -14,3 +14,7 @@ class CredentialsException(HTTPException):
         super(status_code=status.HTTP_401_UNAUTHORIZED,
               detail="Could not validate credentials",
               headers={"WWW-Authenticate": "Bearer"})
+
+
+class UserRegistrationError(Exception):
+    pass

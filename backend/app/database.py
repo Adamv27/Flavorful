@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models import Recipe, User
-from app.schemas import RecipeSchema, UserSchema 
+from app.schemas import RecipeSchema, UserSchema, RegisterUserSchema
 from app.exceptions import RecipeDoesNotExistError
 from app.config import SessionLocal
 
@@ -13,7 +13,7 @@ def get_db():
         db.close()
 
 
-def add_user(db: Session, user: UserSchema):
+def add_user(db: Session, user: RegisterUserSchema):
     _user = User(username=user.username, hashed_password=user.password)
     db.add(_user)
     db.commit()
