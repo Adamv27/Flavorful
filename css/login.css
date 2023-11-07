@@ -8,7 +8,7 @@ main {
   height: 70%; 
 }
 
-#login-form {
+.user-form {
   background-color: white;
   width: min(75%, 30rem);
   padding: 2rem;
@@ -17,11 +17,11 @@ main {
   flex-direction: column;
 }
 
-#login-form > div, button, small {
+.user-form > div, button, small {
   margin-top: 0.5rem;
 }
 
-#login-form > button {
+.user-form > button {
   border-radius: 100px;
   background-color: var(--green);
 }
