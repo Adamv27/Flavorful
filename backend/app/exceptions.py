@@ -17,4 +17,8 @@ class CredentialsException(HTTPException):
 
 
 class UserRegistrationError(Exception):
-    pass
+    def __init__(self, **kwargs):
+        self.message = "Unable to register. Invalid username or password"
+
+        if "message" in kwargs.keys():
+            self.message = kwargs["message"]
