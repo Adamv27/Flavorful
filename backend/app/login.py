@@ -9,7 +9,7 @@ from app.schemas import UserSchema, Token, TokenData, RegisterUserSchema
 from app.database import get_user_by_username, get_db
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
-from app.exceptions import CredentialsException
+from app.exceptions import CredentialsException, UserRegistrationError
 
 
 load_dotenv()
@@ -71,7 +71,10 @@ async def get_current_user(
     return user
 
 
-def verify_new_user(new_user: RegisterUserSchema):
+def verify_new_user(db: Session, new_user: RegisterUserSchema):
+    if get_user_by_username(db, new_user.username):
+        raise UserRegistrationError(message="Username is already taken")
+
     if len(new_user.username) < 3 or len(new_user.password) < 5:
         return False
 
@@ -79,4 +82,3 @@ def verify_new_user(new_user: RegisterUserSchema):
         return False
 
     return True
-
