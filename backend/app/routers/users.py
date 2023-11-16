@@ -30,7 +30,9 @@ async def login_for_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
 
-    return {"access_token": access_token, "token_type": "bearer"}
+    json_string = f"access_token: {access_token} token_type: bearer"
+    return JSONResponse(content=json_string,
+                        headers={"Access-Control-Allow-Origin": "http://127.0.0.1:8080"})
 
 
 @router.get("/me")
@@ -43,10 +45,13 @@ async def register_new_user(
     new_user: Annotated[RegisterUserSchema, Depends()],
     db: Annotated[Session, Depends(get_db)]
 ):
+    logger.info("TESTING!!")
+
     if not verify_new_user(db, new_user):
         raise UserRegistrationError
 
     new_user.password = get_password_hash(new_user.password)
     add_user(db, new_user)
 
-    return JSONResponse(content=f"Registered: {new_user.username} {new_user.password}", headers={"Access-Control-Allow-Origin": "http://127.0.0.1:8080"})
+    return JSONResponse(content=f"Registered: {new_user.username} {new_user.password}",
+                        headers={"Access-Control-Allow-Origin": "http://127.0.0.1:8080"})
