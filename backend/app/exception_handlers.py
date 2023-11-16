@@ -26,7 +26,8 @@ def add_global_exception_handler(app: FastAPI):
     async def invalid_login_handler(request, exc):
         return JSONResponse(
             status_code=401,
-            content={"message": "Invalid login"}
+            content={"message": "Invalid login"},
+            headers={"Access-Control-Allow-Origin": "http://127.0.0.1:8080"}
         )
 
     @app.exception_handler(UserRegistrationError)

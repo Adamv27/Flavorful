@@ -10,23 +10,50 @@ const signup = async () => {
     const confirm_password = document.getElementById("confirm-password-input").value;
     const url = BASE_URL + `register?username=${username}&password=${password}&confirm_password=${confirm_password}`
     
-    await fetch(url, {
+    fetch(url, {
         method: "POST"
     })
     .then(response => response.json())
     .then(data => console.log(data));
 }
 
+
+
+/*
+* All actual input validation is done
+* on the server side however empty
+* inputs or inputs under 3 characters
+* should not even attempt to login 
+*
+*/ 
+const is_valid_input = word => {
+    if (word === null || word.length < 3) {
+        return false;
+    }
+    return true;
+}
+
+
 const login = async () => {
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
-    
-    const url = BASE_URL + `username=${username}&password=${password}` 
-    await fetch(url, {
-        method: "POST",
-        mode: "no-cors",
 
+    if (!is_valid_input(username) || !is_valid_input(password)) {
+        return;  
+    }
+    
+    const url = BASE_URL + "token" 
+    const data = `grant_type=&username=${username}&password=${password}&scope=&client_id=&client_secret=&`
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data,
     })
+    .then(response => response.json())
+    .then(data => console.log(data));
 }
 
 
