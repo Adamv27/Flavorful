@@ -10,7 +10,9 @@ from app.database import get_user_by_username, get_db
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 from app.exceptions import CredentialsException, UserRegistrationError
+import logging
 
+logger = logging.getLogger("uvicorn")
 
 load_dotenv()
 
@@ -21,7 +23,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 
 def verify_password(plain_password, hashed_password):
@@ -60,14 +62,14 @@ async def get_current_user(
         payload = jwt.decode(token, JWT_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
-            raise CredentialsException
+            raise CredentialsException(message="Username not found")
         token_data = TokenData(username=username)
     except JWTError:
-        raise CredentialsException
+        raise CredentialsException(message="InvalidJWT")
 
     user = get_user_by_username(db, username=token_data.username)
     if user is None:
-        raise CredentialsException
+        raise CredentialsException(message="Username not in db")
     return user
 
 

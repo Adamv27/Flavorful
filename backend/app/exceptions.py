@@ -9,11 +9,11 @@ class InvalidLoginError(Exception):
     pass
 
 
-class CredentialsException(HTTPException):
-    def __init__(self):
-        super(status_code=status.HTTP_401_UNAUTHORIZED,
-              detail="Could not validate credentials",
-              headers={"WWW-Authenticate": "Bearer"})
+class CredentialsException(Exception):
+    def __init__(self, **kwargs):
+        self.message = "Could not validate credentials"
+        if "message" in kwargs.keys():
+            self.message = kwargs["message"]
 
 
 class UserRegistrationError(Exception):
