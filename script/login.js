@@ -20,11 +20,8 @@ const signup = async () => {
 
 
 /*
-* All actual input validation is done
-* on the server side however empty
-* inputs or inputs under 3 characters
-* should not even attempt to login 
-*
+* All actual input validation is done on the server side however empty
+* inputs or inputs under 3 characters should not even attempt to login 
 */ 
 const is_valid_input = word => {
     if (word === null || word.length < 3) {
@@ -51,6 +48,19 @@ const login = async () => {
             "Content-Type": "application/x-www-form-urlencoded",
         },
         body: data,
+    })
+    .then(response => response.json())
+    .then(data => me(data.access_token));
+}
+
+const me = async (token) => {
+    if (token == null) return
+    
+    fetch(BASE_URL + "me", { 
+        method: "GET",
+        headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`},
     })
     .then(response => response.json())
     .then(data => console.log(data));
