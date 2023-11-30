@@ -36,7 +36,7 @@
     <main>
       <div id="option-container" class="center-content">
         <div id="time-option" class="option current">
-          <h2>Maximum time you would like to spend cooking?</h2>
+          <p class="option-label">Maximum time you would like to spend cooking?</p>
           <div class="option-button-container">
             <button class="option-button flat" onclick="nextOption(setTimeToCook, 25)">
               Not too long<br><small>15-30 minutes</small></button> 
@@ -46,16 +46,16 @@
           </div>
         </div>
         <div id="calories-option" class="option">
-          <label for="max-calories-range">Maximum calories per serving</label>
+          <label class="option-label" for="max-calories-range">Maximum calories per serving</label>
           <span id="calorie-range-display">500</span>
           <input id="max-calories-range" type="range" class="form-range full-round bg-white" min="0" max="1000" oninput="updateRangeDisplay(this.value)">
         </div>
         <div id="cuisine-option" class="option">
           <div class="input-box">
-            <label for="cuisine-search-bar">Cuisine</label>
-            
+            <label class="option-label" for="cuisine-search-bar">Cuisine</label>
             <div id="input-container" class="center-content">
-              <input type="text" id="recipe-input" class="search-bar flat full-round" placeholder="Type to search" />
+              <input type="text" id="cuisine-search-bar" class="search-bar flat full-round" placeholder="Type to search" />
+              <label for="search-recipes" class="sr-only">Search Button</label>
               <button id="search-recipes" class="search-bar-icon flat center-content full-round">
                 <span class="sr-only white">Search Button</span>
                 <i class="fa fa-search"></i>
@@ -64,12 +64,12 @@
           </div>
         </div>
         <div id="advanced-options" class="option">
-          <button>Show Advanced Options</button>
-          <button onclick="searchForRecipes()">Search For Recipes</button>
+          <button class="button">Show Advanced Options</button>
+          <button class="button" onclick="searchForRecipes()">Search For Recipes</button>
         </div>
         <div id="options-nav">
-          <button onclick="prevOption()">Back</button>
-          <button onclick="nextOption()">Next</button>
+          <button class="button" onclick="prevOption()">Back</button>
+          <button class="button" onclick="nextOption()">Next</button>
         </div>
       </div>
       
