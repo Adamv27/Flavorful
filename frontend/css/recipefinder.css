@@ -8,7 +8,6 @@
   max-width: 30rem;
 }
 
-
 .option-label {
   width: 100%;
   font-size: x-large;
@@ -34,7 +33,6 @@
 
 #options-nav > .button {
   background-color: var(--brown);
-  color: white;
 }
 
 input[type="range"]::-webkit-slider-runnable-track,
