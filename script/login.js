@@ -1,7 +1,9 @@
+import { user } from "../script/user.js"
+
 const login_form = document.getElementById("login-form")
 const signup_form = document.getElementById("signup-form")
 
-BASE_URL = "http://127.0.01:8000/auth/"
+const BASE_URL = "http://127.0.01:8000/auth/"
 
 
 const signup = async () => {
@@ -50,7 +52,11 @@ const login = async () => {
         body: data,
     })
     .then(response => response.json())
-    .then(data => me(data.access_token));
+    .then(data => {
+        if (data.access_token) {
+            user.set_token(data.access_token)
+        }
+    })
 }
 
 const me = async (token) => {
