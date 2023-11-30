@@ -8,14 +8,33 @@
   max-width: 30rem;
 }
 
-#calories-option > label {
+
+.option-label {
   width: 100%;
-  font-size: xx-large;
+  font-size: x-large;
+  text-align: center;
 }
 
 #max-calories-range {
   height: 3rem;
   padding: 1rem;
+}
+
+.button {
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+#advanced-options > .button {
+  padding: 1rem;
+  background-color: var(--green);
+  color: white;
+}
+
+#options-nav > .button {
+  background-color: var(--brown);
+  color: white;
 }
 
 input[type="range"]::-webkit-slider-runnable-track,
@@ -55,6 +74,7 @@ input[type="range"]::-moz-range-thumb:active{
 
 .option {
   display: none;
+  margin-bottom: 1rem;
 }
 
 .option.current {
@@ -81,6 +101,10 @@ input[type="range"]::-moz-range-thumb:active{
   justify-items: center;
 }
 
+
+/*
+  RECIPE CARD STYLING
+*/
 .card {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
