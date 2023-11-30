@@ -8,6 +8,10 @@
   color: var(--tan);
 }
 
+main {
+  margin-bottom: 5rem;
+}
+
 
 .content-container .link-button {
   width: 10rem;
