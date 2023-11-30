@@ -26,6 +26,11 @@ main {
   background-color: var(--green);
 }
 
+.user-form > button:hover {
+  background-color: var(--green);
+  filter: brightness(80%);
+}
+
 
 .form-group {
   display: flex;
