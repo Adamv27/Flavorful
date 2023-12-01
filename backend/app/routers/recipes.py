@@ -24,10 +24,14 @@ router = APIRouter(
 )
 
 
-
-@router.post("/create")
-async def create(request: RequestRecipe, db: Session = Depends(get_db)):
-    database.create_recipe(db, recipe=request.recipe)
+@router.post("/add")
+async def create(
+        current_user: Annotated[UserSchema, Depends(get_current_user)],
+        request: RequestRecipe,
+        db: Annotated[Session, Depends(get_db)]
+):
+    user_id = current_user.username + current_user.hashed_password
+    database.create_recipe(db, recipe=request.recipe, user_id=user_id)
     return Response(code=200, status="Ok", message="Recipe created successfully").dict(exclude_none=True)
 
 

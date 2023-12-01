@@ -33,8 +33,13 @@ def get_recipes_by_user_id(db: Session, user_id: str):
     return db.query(Recipe).filter(Recipe.user_id == user_id)
 
 
-def create_recipe(db: Session, recipe: RecipeSchema):
+def get_recipe_by_id(db: Session, recipe_id: int):
+    return db.query(Recipe).filter(Recipe.id == recipe_id)
+
+
+def create_recipe(db: Session, recipe: RecipeSchema, user_id: str):
     _recipe = Recipe(id=recipe.id,
+                     user_id=user_id,
                      title=recipe.title,
                      image_url=recipe.image_url)
     db.add(_recipe)
