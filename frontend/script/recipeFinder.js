@@ -16,17 +16,25 @@ const toggleSaveRecipe = (recipeID) => {
 }
 
 
-const saveRecipe = (recipe) => {
+const saveRecipe = async (recipe) => {
     const token = user.get_token()
     if (token == null) return
     
-    fetch("127.0.0.1:8000/recipes/add", {
+    const saved_recipe = {
+        id: recipe.id,
+        user_id: null,
+        title: recipe.title,
+        image_url: recipe.image,
+    }
+
+    fetch("http://127.0.0.1:8000/recipes/add", {
         method: "POST",
         headers: {
+            "Content-Type": "application/json",
             "Accept": "application/json",
             "Authorization": "Bearer " + token
         },
-        body: recipe
+        body: JSON.stringify({"recipe": saved_recipe})
     })
     .then(response => response.json())
 }
@@ -41,8 +49,8 @@ const displayRecipes = (recipes) => {
         card.querySelector("img").src = recipe.image;
         card.querySelector(".card-title").textContent = recipe.title;
         card.style.display = "flex";
-        card.querySelector(".save-button").addEventListener('click', () => {
-            saveRecipe(recipe)
+        card.querySelector(".save-button").addEventListener('click', async () => {
+            await saveRecipe(recipe)
             toggleSaveRecipe(recipe.id);
         });
 
