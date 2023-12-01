@@ -29,8 +29,8 @@ def get_recipe(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Recipe).offset(skip).limit(limit).all()
 
 
-def get_recipe_by_id(db: Session, recipe_id: int):
-    return db.query(Recipe).filter(Recipe.id == recipe_id).first()
+def get_recipes_by_user_id(db: Session, user_id: str):
+    return db.query(Recipe).filter(Recipe.user_id == user_id)
 
 
 def create_recipe(db: Session, recipe: RecipeSchema):
