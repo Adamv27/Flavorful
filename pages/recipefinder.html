@@ -38,17 +38,16 @@
         <div id="time-option" class="option current">
           <p class="option-label">Maximum time you would like to spend cooking?</p>
           <div class="option-button-container">
-            <button class="option-button flat" onclick="nextOption(setTimeToCook, 25)">
-              Not too long<br><small>15-30 minutes</small></button> 
-            <button class="option-button flat" onclick="nextOption(setTimeToCook, 40)">A medium amount <br>30-60 minutes</button> 
-            <button class="option-button flat" onclick="nextOption(setTimeToCook, 120)">A while<br> 1+ hour</button> 
-            <button class="option-button flat">I don't Care</button>
+            <button id="time-15" class="option-button flat">~ 15 minutes</button> 
+            <button id="time-30" class="option-button flat">~ 30 minutes</button> 
+            <button id="time-60" class="option-button flat">~ 1 hour</button> 
+            <button id="time-120" class="option-button flat">I don't Care</button>
           </div>
         </div>
         <div id="calories-option" class="option">
           <label class="option-label" for="max-calories-range">Maximum calories per serving</label>
           <span id="calorie-range-display">500</span>
-          <input id="max-calories-range" type="range" class="form-range full-round bg-white" min="0" max="1000" oninput="updateRangeDisplay(this.value)">
+          <input id="max-calories-range" type="range" class="form-range full-round bg-white" min="0" max="1000">
         </div>
         <div id="cuisine-option" class="option">
           <div class="input-box">
@@ -64,12 +63,12 @@
           </div>
         </div>
         <div id="advanced-options" class="option">
-          <button class="button">Show Advanced Options</button>
-          <button class="button" onclick="searchForRecipes()">Search For Recipes</button>
+          <button>Show Advanced Options</button>
+          <button id="search-button">Search For Recipes</button>
         </div>
         <div id="options-nav">
-          <button class="button" onclick="prevOption()">Back</button>
-          <button class="button" onclick="nextOption()">Next</button>
+          <button id="prev-option">Back</button>
+          <button id="next-option">Next</button>
         </div>
       </div>
       
@@ -87,7 +86,8 @@
       </div>
     </main>
 
-    <script src="../script/recipeFinder.js"></script>
+    <script type="module" src="../script/recipeFinder.js"></script>
+    <script type="module" src="../script/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -1,3 +1,5 @@
+import { user } from "../script/user.js";
+
 const resultsContainer = document.getElementById('results-container')
 
 
@@ -14,6 +16,22 @@ const toggleSaveRecipe = (recipeID) => {
 }
 
 
+const saveRecipe = (recipe) => {
+    const token = user.get_token()
+    if (token == null) return
+    
+    fetch("127.0.0.1:8000/recipes/add", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: recipe
+    })
+    .then(response => response.json())
+}
+
+
 const displayRecipes = (recipes) => {
     let card; 
     for (let recipe of recipes) {
@@ -24,6 +42,7 @@ const displayRecipes = (recipes) => {
         card.querySelector(".card-title").textContent = recipe.title;
         card.style.display = "flex";
         card.querySelector(".save-button").addEventListener('click', () => {
+            saveRecipe(recipe)
             toggleSaveRecipe(recipe.id);
         });
 
@@ -110,3 +129,13 @@ const updateRangeDisplay = value => {
 }
 
 
+document.getElementById("next-option").addEventListener("click", () => nextOption())
+document.getElementById("prev-option").addEventListener("click", prevOption)
+document.getElementById("search-button").addEventListener("click", searchForRecipes)
+
+document.getElementById("time-15").addEventListener("click", () => nextOption(setTimeToCook, 15))
+document.getElementById("time-30").addEventListener("click", () => nextOption(setTimeToCook, 30))
+document.getElementById("time-60").addEventListener("click", () => nextOption(setTimeToCook, 60))
+document.getElementById("time-120").addEventListener("click", () => nextOption(setTimeToCook, 120))
+
+document.getElementById("max-calories-range").addEventListener("input", (e) => setMaxCalories(e.target.value))
