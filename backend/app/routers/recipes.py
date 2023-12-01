@@ -43,4 +43,7 @@ async def saved_recipes(
         current_user: Annotated[UserSchema, Depends(get_current_user)],
         db: Session = Depends(get_db)
 ):
-    return {"message": "saved"} 
+    user_id = current_user.username + current_user.hashed_password
+    recipes = database.get_recipes_by_user_id(db, user_id)
+    recipes = [recipe for recipe in recipes if recipe is not None]
+    return {"message": recipes}

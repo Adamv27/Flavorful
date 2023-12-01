@@ -27,7 +27,8 @@ class TokenData(BaseModel):
 
 
 class RecipeSchema(BaseModel):
-    id: Optional[int] = None
+    id: int
+    user_id: Optional[str] = None
     title: Optional[str] = None
     image_url: Optional[str] = None
 

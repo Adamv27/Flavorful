@@ -6,6 +6,7 @@ class Recipe(Base):
     __tablename__ = "recipes"
 
     id = Column(Integer, primary_key=True)
+    user_id = Column(String)
     title = Column(String)
     image_url = Column(String)
 
