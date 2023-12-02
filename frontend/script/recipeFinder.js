@@ -3,7 +3,7 @@ import { user } from "../script/user.js";
 const resultsContainer = document.getElementById('results-container')
 
 
-const toggleSaveRecipe = (recipeID) => {
+export const toggleSaveRecipe = (recipeID) => {
     let recipeCard = document.getElementById(recipeID);
     let bookmarkIcon = recipeCard.querySelector(".bookmark-image"); 
     if (bookmarkIcon.classList.contains("saved")) {
@@ -16,7 +16,7 @@ const toggleSaveRecipe = (recipeID) => {
 }
 
 
-const saveRecipe = async (recipe) => {
+export const saveRecipe = async (recipe) => {
     const token = user.get_token()
     if (token == null) return
     
@@ -40,7 +40,7 @@ const saveRecipe = async (recipe) => {
 }
 
 
-const displayRecipes = (recipes) => {
+export const displayRecipes = (recipes) => {
     let card; 
     for (let recipe of recipes) {
         // Clone base recipe card tempalte
@@ -85,7 +85,7 @@ const toggleOptionViews = (prevOption, newOption) => {
 
 
 let currentOptionIndex = 0;
-const optionsContainer = document.getElementById("option-container").children;
+const optionsContainer = document.getElementById("option-container")?.children;
 
 let options = {
     maxCalories: 1000,
@@ -137,13 +137,13 @@ const updateRangeDisplay = value => {
 }
 
 
-document.getElementById("next-option").addEventListener("click", () => nextOption())
-document.getElementById("prev-option").addEventListener("click", prevOption)
-document.getElementById("search-button").addEventListener("click", searchForRecipes)
+document.getElementById("next-option")?.addEventListener("click", () => nextOption())
+document.getElementById("prev-option")?.addEventListener("click", prevOption)
+document.getElementById("search-button")?.addEventListener("click", searchForRecipes)
 
-document.getElementById("time-15").addEventListener("click", () => nextOption(setTimeToCook, 15))
-document.getElementById("time-30").addEventListener("click", () => nextOption(setTimeToCook, 30))
-document.getElementById("time-60").addEventListener("click", () => nextOption(setTimeToCook, 60))
-document.getElementById("time-120").addEventListener("click", () => nextOption(setTimeToCook, 120))
+document.getElementById("time-15")?.addEventListener("click", () => nextOption(setTimeToCook, 15))
+document.getElementById("time-30")?.addEventListener("click", () => nextOption(setTimeToCook, 30))
+document.getElementById("time-60")?.addEventListener("click", () => nextOption(setTimeToCook, 60))
+document.getElementById("time-120")?.addEventListener("click", () => nextOption(setTimeToCook, 120))
 
-document.getElementById("max-calories-range").addEventListener("input", (e) => setMaxCalories(e.target.value))
+document.getElementById("max-calories-range")?.addEventListener("input", (e) => setMaxCalories(e.target.value))
