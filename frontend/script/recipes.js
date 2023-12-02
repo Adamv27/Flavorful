@@ -1,5 +1,5 @@
 import { user } from "../script/user.js"
-import { displayRecipes, saveRecipe, toggleSaveRecipe } from "../script/recipeFinder.js"
+import { displayRecipes, saveRecipe, toggleSaveRecipe } from "../script/recipefinder.js"
 
 const BASE_URL = "http://127.0.0.1:8000/recipes"
 
