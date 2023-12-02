@@ -1,4 +1,5 @@
 import { user } from "../script/user.js"
+import { displayRecipes, saveRecipe, toggleSaveRecipe } from "../script/recipeFinder.js"
 
 const BASE_URL = "http://127.0.0.1:8000/recipes"
 
@@ -20,5 +21,5 @@ const get_user_recipes = async (token) => {
         'Authorization': `Bearer ${token}`},
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => displayRecipes(data.recipes));
 }
