@@ -1,5 +1,4 @@
 import os
-import requests
 from fastapi import APIRouter, Depends
 from dotenv import load_dotenv
 
@@ -35,13 +34,6 @@ async def create(
     return Response(code=200, status="Ok", message="Recipe created successfully").dict(exclude_none=True)
 
 
-@router.get("/")
-async def get(db: Session = Depends(get_db)):
-    _recipe = database.get_recipe(db, 0, 100)
-    #return Response(code=200, status="Ok", message="Succeessful Fetch All data", result=_recipe)
-    return {"message": "recipes"}
-
-
 @router.get("/saved")
 async def saved_recipes(
         current_user: Annotated[UserSchema, Depends(get_current_user)],
@@ -49,5 +41,8 @@ async def saved_recipes(
 ):
     user_id = current_user.username + current_user.hashed_password
     recipes = database.get_recipes_by_user_id(db, user_id)
-    recipes = [recipe for recipe in recipes if recipe is not None]
-    return {"message": recipes}
+    recipes = [{"id": recipe.id,
+                "image": recipe.image_url,
+                "title": recipe.title}
+               for recipe in recipes if recipe is not None]
+    return {"recipes": recipes}
