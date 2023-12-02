@@ -33,8 +33,9 @@ def get_recipes_by_user_id(db: Session, user_id: str):
     return db.query(Recipe).filter(Recipe.user_id == user_id)
 
 
-def get_recipe_by_id(db: Session, recipe_id: int):
-    return db.query(Recipe).filter(Recipe.id == recipe_id)
+def get_recipe_by_id(db: Session, user_id: str, recipe_id: int):
+    return db.query(Recipe).filter(Recipe.id == recipe_id,
+                                   Recipe.user_id == user_id).first()
 
 
 def create_recipe(db: Session, recipe: RecipeSchema, user_id: str):
@@ -48,14 +49,14 @@ def create_recipe(db: Session, recipe: RecipeSchema, user_id: str):
     return _recipe
 
 
-def remove_recipe(db: Session, recipe_id: int):
-    _recipe = get_recipe_by_id(db=db, recipe_id=recipe_id)
+def remove_recipe(db: Session, user_id: str, recipe_id: int):
+    _recipe = get_recipe_by_id(db=db, user_id=user_id, recipe_id=recipe_id)
     db.delete(_recipe)
     db.commit()
 
 
-def update_recipe(db: Session, recipe_id: int, title: str, image_url: str):
-    _recipe = get_recipe_by_id(db=db, recipe_id=recipe_id)
+def update_recipe(db: Session, user_id: str, recipe_id: int, title: str, image_url: str):
+    _recipe = get_recipe_by_id(db=db, user_id=user_id, recipe_id=recipe_id)
     if _recipe is None:
         raise RecipeDoesNotExistError
     _recipe.title = title
