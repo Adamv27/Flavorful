@@ -58,7 +58,8 @@ const removeRecipe = async recipeID => {
         }
     })
     response = await response.json()
-    console.log(response)
+    if (response.code == 200)
+        document.getElementById(recipeID).remove()
 }
 
 
@@ -72,10 +73,10 @@ export const displayRecipes = (recipes) => {
         card.querySelector(".card-title").textContent = recipe.title;
         card.style.display = "flex";
         card.querySelector(".save-button").addEventListener('click', async () => {
+            toggleSaveRecipeIcon(recipe.id);
             if(!await saveRecipe(recipe)) {
                 await removeRecipe(recipe.id)
             }
-            toggleSaveRecipeIcon(recipe.id);
         });
 
         resultsContainer.appendChild(card);
