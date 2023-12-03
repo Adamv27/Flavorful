@@ -23,8 +23,8 @@ const get_user_recipes = async (token) => {
     })
     .then(response => response.json())
     .then(data => {
-        displayRecipes(data.message)
-        for (let recipe of data.message) {
+        displayRecipes(data.recipes)
+        for (let recipe of data.recipes) {
             toggleSaveRecipeIcon(recipe.id);
         }
     });

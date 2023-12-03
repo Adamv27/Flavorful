@@ -1,7 +1,7 @@
 import os
 from fastapi import APIRouter, Depends
 from dotenv import load_dotenv
-
+import json
 from typing import Annotated
 from sqlalchemy.orm import Session
 from app.schemas import RequestRecipe, Response, UserSchema
@@ -72,17 +72,19 @@ async def saved_recipes(
 
 @router.get("/search")
 async def find_recipes():
-    return {"message", [
+
+    recipes = {"recipes": [
         {
-            "id": 715769,
+            "id": 715768,
             "title": "Broccolini Quinoa Pilaf",
-            "image": "https://spoonacular.com/recipeImages/715769-312x231.jpg",
+            "image": "https://spoonacular.com/recipeImages/715768-312x231.jpg",
             "imageType": "jpg"
         },
         {
-            "id": 715538,
+            "id": 715537,
             "title": "What to make for dinner tonight?? Bruschetta Style Pork & Pasta",
-            "image": "https://spoonacular.com/recipeImages/715538-312x231.jpg",
+            "image": "https://spoonacular.com/recipeImages/715537-312x231.jpg",
             "imageType": "jpg"
         }
     ]}
+    return Response(code=200, status="Ok", message=json.dumps(recipes))

@@ -6,7 +6,7 @@ const searchForRecipes = async () => {
 
     await fetch(BASE_URL + '/recipes/search')
         .then(response => response.json())
-        .then(data => displayRecipes(data.results));
+        .then(data => displayRecipes(JSON.parse(data.message).recipes))
 }
 
 
