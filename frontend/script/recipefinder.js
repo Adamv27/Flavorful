@@ -1,9 +1,10 @@
 import { displayRecipes } from "./recipes.js"
+import { BASE_URL } from "./settings.js";
 
 const searchForRecipes = async () => {
     hideFinalView();
 
-    await fetch('https:.//recipes.adamvinch.com/script/recipe_request.json')
+    await fetch(BASE_URL + '/recipes/search')
         .then(response => response.json())
         .then(data => displayRecipes(data.results));
 }

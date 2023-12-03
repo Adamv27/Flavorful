@@ -56,7 +56,6 @@ async def remove_recipe(
     return Response(code=400, status="Conflict", message="Failed to remove recipe from databse")
 
 
-
 @router.get("/saved")
 async def saved_recipes(
         current_user: Annotated[UserSchema, Depends(get_current_user)],
@@ -69,3 +68,21 @@ async def saved_recipes(
                 "title": recipe.title}
                for recipe in recipes if recipe is not None]
     return {"recipes": recipes}
+
+
+@router.get("/search")
+async def find_recipes():
+    return {"message", [
+        {
+            "id": 715769,
+            "title": "Broccolini Quinoa Pilaf",
+            "image": "https://spoonacular.com/recipeImages/715769-312x231.jpg",
+            "imageType": "jpg"
+        },
+        {
+            "id": 715538,
+            "title": "What to make for dinner tonight?? Bruschetta Style Pork & Pasta",
+            "image": "https://spoonacular.com/recipeImages/715538-312x231.jpg",
+            "imageType": "jpg"
+        }
+    ]}
