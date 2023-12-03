@@ -58,7 +58,7 @@ const removeRecipe = async recipeID => {
         }
     })
     response = await response.json()
-    if (response.code == 200)
+    if (response.code == 200 && location.href.endsWith("recipes.html"))
         document.getElementById(recipeID).remove()
 }
 
