@@ -1,5 +1,5 @@
-import { user } from "../script/user.js"
-import { BASE_URL } from "../script/settings.js"
+import { user } from "./user.js"
+import { BASE_URL } from "./settings.js"
 
 const resultsContainer = document.getElementById("results-container");
 

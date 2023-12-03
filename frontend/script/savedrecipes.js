@@ -1,8 +1,8 @@
-import { user } from "../script/user.js"
+import { user } from "./user.js"
 import { displayRecipes, toggleSaveRecipeIcon } from "./recipes.js"
+import { BASE_URL } from "./settings.js"
 
-
-const BASE_URL = "http://127.0.0.1:8000/recipes"
+const URL = BASE_URL + "/recipes" 
 
 window.onload = () => {
     const token = user.get_token()
@@ -15,7 +15,7 @@ window.onload = () => {
 const get_user_recipes = async (token) => {
     if (!token) return
 
-     fetch(BASE_URL + "/saved", { 
+     fetch(URL, { 
         method: "GET",
         headers: {
         'Accept': 'application/json',

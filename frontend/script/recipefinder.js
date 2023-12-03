@@ -1,4 +1,4 @@
-import { displayRecipes } from "../script/recipes.js"
+import { displayRecipes } from "./recipes.js"
 
 const searchForRecipes = async () => {
     hideFinalView();
