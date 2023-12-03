@@ -3,7 +3,7 @@ import { displayRecipes } from "./recipes.js"
 const searchForRecipes = async () => {
     hideFinalView();
 
-    await fetch('../script/recipe_request.json')
+    await fetch('https:.//recipes.adamvinch.com/script/recipe_request.json')
         .then(response => response.json())
         .then(data => displayRecipes(data.results));
 }

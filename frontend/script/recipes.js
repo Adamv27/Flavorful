@@ -30,7 +30,7 @@ const saveRecipe = async (recipe) => {
         image_url: recipe.image,
     }
     let response = await fetch(URL + "/add", {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -50,7 +50,7 @@ const removeRecipe = async recipeID => {
     const token = user.get_token()
     if (token == null) return
         
-    const url = BASE_URL + "/remove/" + recipeID
+    const url = URL + "/remove/" + recipeID
     let response = await fetch(url, {
         headers: {
             "Accept": "application/json",

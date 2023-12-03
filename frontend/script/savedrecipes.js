@@ -15,7 +15,7 @@ window.onload = () => {
 const get_user_recipes = async (token) => {
     if (!token) return
 
-     fetch(URL, { 
+     fetch(URL + "/saved", { 
         method: "GET",
         headers: {
         'Accept': 'application/json',
@@ -23,8 +23,8 @@ const get_user_recipes = async (token) => {
     })
     .then(response => response.json())
     .then(data => {
-        displayRecipes(data.recipes)
-        for (let recipe of data.recipes) {
+        displayRecipes(data.message)
+        for (let recipe of data.message) {
             toggleSaveRecipeIcon(recipe.id);
         }
     });
