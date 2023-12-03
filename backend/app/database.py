@@ -51,8 +51,11 @@ def create_recipe(db: Session, recipe: RecipeSchema, user_id: str):
 
 def remove_recipe(db: Session, user_id: str, recipe_id: int):
     _recipe = get_recipe_by_id(db=db, user_id=user_id, recipe_id=recipe_id)
+    if _recipe is None:
+        return False
     db.delete(_recipe)
     db.commit()
+    return True
 
 
 def update_recipe(db: Session, user_id: str, recipe_id: int, title: str, image_url: str):
