@@ -1,18 +1,20 @@
 import { user } from "../script/user.js"
+import { BASE_URL } from "../script/settings.js"
+
 
 const login_form = document.getElementById("login-form")
 const signup_form = document.getElementById("signup-form")
 
-const BASE_URL = "http://127.0.0.1:8000/auth/"
+const URL = BASE_URL + "/auth"
 
 
 const signup = async () => {
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
     const confirm_password = document.getElementById("confirm-password-input").value;
-    const url = BASE_URL + `register?username=${username}&password=${password}&confirm_password=${confirm_password}`
+    const url_with_content = URL + `/register?username=${username}&password=${password}&confirm_password=${confirm_password}`
     
-    fetch(url, {
+    fetch(url_with_content, {
         method: "POST"
     })
     .then(response => response.json())
@@ -41,10 +43,9 @@ const login = async () => {
         return;  
     }
     
-    const url = BASE_URL + "token" 
     const data = `grant_type=&username=${username}&password=${password}&scope=&client_id=&client_secret=&`
 
-    fetch(url, {
+    fetch(URL + "/token", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -55,7 +56,7 @@ const login = async () => {
     .then(data => {
         if (data.access_token) {
             user.set_token(data.access_token)
-            window.location = "http://127.0.0.1:8080/pages/recipes.html"
+            window.location = "../pages/recipes.html"
         }
     })
 }
@@ -63,7 +64,7 @@ const login = async () => {
 const me = async (token) => {
     if (token == null) return
     
-    fetch(BASE_URL + "me", { 
+    fetch(URL + "/me", { 
         method: "GET",
         headers: {
         'Accept': 'application/json',

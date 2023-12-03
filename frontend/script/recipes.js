@@ -1,8 +1,9 @@
 import { user } from "../script/user.js"
+import { BASE_URL } from "../script/settings.js"
 
 const resultsContainer = document.getElementById("results-container");
 
-const BASE_URL = "http://127.0.0.1:8000/recipes"
+const URL = BASE_URL + "/recipes";
 
 
 export const toggleSaveRecipeIcon = (recipeID) => {
@@ -28,9 +29,8 @@ const saveRecipe = async (recipe) => {
         title: recipe.title,
         image_url: recipe.image,
     }
-
-    let response = await fetch("http://127.0.0.1:8000/recipes/add", {
-        method: "POST",
+    let response = await fetch(URL + "/add", {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
