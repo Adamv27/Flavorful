@@ -4,7 +4,6 @@ import { BASE_URL } from "./settings.js";
 
 let options = {
     maxCalories: 500,
-    cuisineTypes: [],
     timeToCook: 120
 }
 
@@ -15,8 +14,8 @@ const searchForRecipes = async () => {
 
     const request = {
         "options": {
-            "search": "pasta",
-            "cuisine": null,
+            "search": options.search,
+            "cuisine": options.cuisine,
             "max_time": options.timeToCook,
             "max_calories": options.maxCalories 
         }
@@ -61,16 +60,12 @@ const setTimeToCook = time => {
 }
 
 const setMaxCalories = calories => {
-    options.maxCalories = calories;
+    options.maxCalories = parseInt(calories);
     document.getElementById("calorie-range-display").textContent = calories;
 }
 
-const removeCuisineType = cuisineType => {
-    options.cuisineTypes = options.cuisineTypes.filter(value => value != cuisineType);
-}
-
-const addCuisinType = cuisineType => {
-    options.cuisineTypes.push(cuisineType);
+const setCuisine = cuisineType => {
+    options.cuisine = cuisineType
 }
 
 
@@ -95,11 +90,6 @@ const prevOption = () => {
  }
 
 
-const updateRangeDisplay = value => {
-    document.getElementById("calorie-range-display").textContent = value;
-}
-
-
 document.getElementById("next-option")?.addEventListener("click", () => nextOption())
 document.getElementById("prev-option")?.addEventListener("click", prevOption)
 document.getElementById("search-button")?.addEventListener("click", searchForRecipes)
@@ -110,3 +100,5 @@ document.getElementById("time-60")?.addEventListener("click", () => nextOption(s
 document.getElementById("time-120")?.addEventListener("click", () => nextOption(setTimeToCook, 120))
 
 document.getElementById("max-calories-range")?.addEventListener("input", (e) => setMaxCalories(e.target.value))
+
+document.getElementById("cuisine-search-bar")?.addEventListener("input", (e) => setCuisine(e.target.value))
