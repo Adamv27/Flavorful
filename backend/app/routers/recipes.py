@@ -2,6 +2,7 @@ import os
 from fastapi import APIRouter, Depends
 from dotenv import load_dotenv
 import json
+import requests
 from typing import Annotated
 from sqlalchemy.orm import Session
 from app.schemas import RequestRecipe, Response, UserSchema
@@ -72,7 +73,10 @@ async def saved_recipes(
 
 @router.get("/search")
 async def find_recipes():
-
+    logger.info(API_KEY) 
+    spoonacular_url = BASE_URL + "/recipes/complexSearch?query=pasta&cuisine=italian&" + API_KEY_QUERY
+    response = requests.get(spoonacular_url)
+    logger.info(response)
     recipes = {"recipes": [
         {
             "id": 715768,
