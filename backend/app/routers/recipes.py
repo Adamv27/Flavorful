@@ -1,5 +1,6 @@
 import os
 from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import json
 import requests
@@ -69,6 +70,14 @@ async def saved_recipes(
                 "title": recipe.title}
                for recipe in recipes if recipe is not None]
     return {"recipes": recipes}
+
+
+@router.get("/details/{recipe_id}")
+async def get_recipe_details(recipe_id: int):
+    spoonacular_url = BASE_URL + f"/recipes/{recipe_id}/information?" + API_KEY_QUERY
+    response = requests.get(spoonacular_url)
+    logger.info(response)
+    return JSONResponse(status_code=200, content=response.text)
 
 
 @router.post("/search")
