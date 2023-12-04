@@ -49,7 +49,7 @@ const saveRecipe = async (recipe) => {
 const removeRecipe = async recipeID => {
     const token = user.get_token()
     if (token == null) return
-        
+       
     const url = URL + "/remove/" + recipeID
     let response = await fetch(url, {
         headers: {
@@ -95,7 +95,7 @@ export const displayRecipes = (recipes) => {
     let modal;
     for (let recipe of recipes) {
         // Clone base recipe card tempalte
-        card = document.querySelector("a[data-type='template']").cloneNode(true);
+        card = document.getElementById("card-template").cloneNode(true);
         modal = buildModal(recipe);
         resultsContainer.appendChild(modal);
 

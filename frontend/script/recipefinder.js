@@ -30,7 +30,6 @@ const searchForRecipes = async () => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         displayRecipes(JSON.parse(data.message).results)
     })
 }

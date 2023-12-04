@@ -74,18 +74,40 @@
       </div>
       
       <div id="results-container">
-        <!-- Recipe card template -->
-        <div style="display: none" data-type="template" class="card recipe semi-round">
-          <img alt="template image" src="../images/cooking.svg"> 
-          <div class="overlay full-size semi-round">
-            <button class="save-button flat full-round center-content bg-white">
-              <img class="bookmark-image" src="../images/bookmark-off.svg" alt="Bookmark icon"> 
-            </button>
-            <h4 class="card-title">Template Title</h4>
+    </main>
+
+    <!-- Recipe page modal template -->
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Recipe 
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn visit">Website</a>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+
+    <!-- Recipe card template -->
+    <a id="card-template" style="display: none" class="card recipe semi-round" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-type="template">
+      <div data-type="template" class="card recipe semi-round">
+        <img alt="template image" src="../images/cooking.svg"> 
+        <div class="overlay full-size semi-round">
+          <button class="save-button flat full-round center-content bg-white">
+            <img class="bookmark-image" src="../images/bookmark-off.svg" alt="Bookmark icon"> 
+          </button>
+          <h4 class="card-title">Template Title</h4>
+        </div>
+      </div>
+    </a>
+
+
 
     <script type="module" src="../script/recipefinder.js"></script>
     <script type="module" src="../script/user.js"></script>
