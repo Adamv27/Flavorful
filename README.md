@@ -174,7 +174,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-shield]: https://img.shields.io/github/issues/Adamv27/WhatToEat.svg?style=for-the-badge
 [issues-url]: https://github.com/Adamv27/WhatToEat/issues
 [license-shield]: https://img.shields.io/github/license/Adamv27/WhatToEat.svg?style=for-the-badge
-[license-url]: https://github.com/Adamv27/WhatToEat/blob/main/LICENSE
+[license-url]: https://github.com/Adamv27/WhatToEat/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adam-vinch
 [product-screenshot]: images/screenshot.png
