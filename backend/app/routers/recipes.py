@@ -90,7 +90,7 @@ async def find_recipes(request: RequestSearchRecipe):
     calories = f'maxCalories={options.max_calories}&' if options.max_calories else ""
     
     search = query + cuisine + time + calories
-    logger.log(search)
+    logger.info(search)
     spoonacular_url = BASE_URL + "/recipes/complexSearch?" + search + API_KEY_QUERY
     response = requests.get(spoonacular_url)
     return Response(code=200, status="Ok", message=response.text)
