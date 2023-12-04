@@ -54,13 +54,45 @@
           <div class="input-box">
             <label class="option-label" for="cuisine-search-bar">Cuisine</label>
             <div id="input-container" class="center-content">
-              <input type="text" id="cuisine-search-bar" class="search-bar flat full-round" placeholder="Type to search" />
+              <input list="cuisines" type="text" id="cuisine-search-bar" class="search-bar flat full-round" placeholder="Type to search"/>
+              <datalist id="cuisines">
+                <option value="African">
+                <option value="Asian">
+                <option value="American">
+                <option value="British">
+                <option value="Cajun">
+                <option value="Caribbean">
+                <option value="Chinese">
+                <option value="Eatern European">
+                <option value="French">
+                <option value="German">
+                <option value="Greek">
+                <option value="Indian">
+                <option value="Irish">
+                <option value="Italian">
+                <option value="Japanese">
+                <option value="Jewish">
+                <option value="Korean">
+                <option value="Latin American">
+                <option value="Mediterranean">
+                <option value="Mexican">
+                <option value="Middle Eastern">
+                <option value="Nordic">
+                <option value="Southern">
+                <option value="Spanish">
+                <option value="Thai">
+                <option value="Vietnamese">
+              </datalist>
               <label for="search-recipes" class="sr-only">Search Button</label>
               <button id="search-recipes" class="search-bar-icon flat center-content full-round">
                 <span class="sr-only white">Search Button</span>
                 <i class="fa fa-search"></i>
               </button>
             </div>  
+            <datalist id="cusine-list">
+              <option>Asian</option>
+              <option>Chinese</option>
+            </datalist>
           </div>
         </div>
         <div id="advanced-options" class="option">
@@ -106,8 +138,6 @@
         </div>
       </div>
     </a>
-
-
 
     <script type="module" src="../script/recipefinder.js"></script>
     <script type="module" src="../script/user.js"></script>
