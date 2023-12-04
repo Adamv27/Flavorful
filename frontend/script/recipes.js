@@ -112,7 +112,9 @@ export const displayRecipes = (recipes) => {
             }
         });
 
-        card.addEventListener("click", async () => {
+        card.addEventListener("click", async e => {
+            if (e.target.classList.contains("save-button") || e.taret.classList.contains("bookmark-image"))
+                return
             editModal(recipe.id);
         })
 

@@ -29,7 +29,10 @@ const searchForRecipes = async () => {
         body: JSON.stringify(request)
     })
     .then(response => response.json())
-    .then(data => displayRecipes(JSON.parse(data.message).results))
+    .then(data => {
+        console.log(data)
+        displayRecipes(JSON.parse(data.message).results)
+    })
 }
 
 
