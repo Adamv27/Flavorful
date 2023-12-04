@@ -62,12 +62,35 @@ const removeRecipe = async recipeID => {
         document.getElementById(recipeID).remove()
 }
 
+const editModal = async (recipeID) => {
+    let modal = document.getElementById("modal" + recipeID)
+    modal.querySelector(".modal-body").textContent = "TESTING!"
+
+    const url = URL + "/details/" + recipeID
+    let response = await fetch(url);
+}
+
+
+const buildModal = (recipe) => {
+    const modal = document.getElementById("exampleModal").cloneNode(true);
+    modal.id = "modal" + recipe.id;
+    modal.querySelector('.modal-title').textContent = recipe.title;
+    modal.querySelector('.modal-body').textContent = recipe.id;
+    return modal;
+}
+
 
 export const displayRecipes = (recipes) => {
     let card; 
+    let modal;
     for (let recipe of recipes) {
         // Clone base recipe card tempalte
-        card = document.querySelector("div[data-type='template']").cloneNode(true);
+        card = document.querySelector("a[data-type='template']").cloneNode(true);
+        modal = buildModal(recipe);
+        resultsContainer.appendChild(modal);
+
+        card.dataset.bsTarget = "#" + modal.id 
+
         card.id = recipe.id;
         card.querySelector("img").src = recipe.image;
         card.querySelector(".card-title").textContent = recipe.title;
@@ -78,6 +101,10 @@ export const displayRecipes = (recipes) => {
                 await removeRecipe(recipe.id)
             }
         });
+
+        card.addEventListener("click", async () => {
+            editModal(recipe.id);
+        })
 
         resultsContainer.appendChild(card);
     }
