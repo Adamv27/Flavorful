@@ -5,7 +5,7 @@ import json
 import requests
 from typing import Annotated
 from sqlalchemy.orm import Session
-from app.schemas import RequestRecipe, Response, UserSchema
+from app.schemas import RequestRecipe, Response, UserSchema, RequestSearchRecipe
 from app import database
 from app.database import get_db
 from app.login import get_current_user
@@ -71,24 +71,16 @@ async def saved_recipes(
     return {"recipes": recipes}
 
 
-@router.get("/search")
-async def find_recipes():
-    logger.info(API_KEY) 
-    spoonacular_url = BASE_URL + "/recipes/complexSearch?query=pasta&cuisine=italian&" + API_KEY_QUERY
+@router.post("/search")
+async def find_recipes(request: RequestSearchRecipe):
+    options = request.options
+
+    query = f'query={options.search if options.search is not None else ""}&'
+    cuisine = f'cuisine={options.cuisine}&' if options.cuisine else ""
+    time = f'maxReadyTime={options.max_time if options.max_time is not None else ""}&'
+    calories = f'maxCalories={options.max_calories}&' if options.max_calories else ""
+
+    search = query + cuisine + time + calories
+    spoonacular_url = BASE_URL + "/recipes/complexSearch?" + search + API_KEY_QUERY
     response = requests.get(spoonacular_url)
-    logger.info(response)
-    recipes = {"recipes": [
-        {
-            "id": 715768,
-            "title": "Broccolini Quinoa Pilaf",
-            "image": "https://spoonacular.com/recipeImages/715768-312x231.jpg",
-            "imageType": "jpg"
-        },
-        {
-            "id": 715537,
-            "title": "What to make for dinner tonight?? Bruschetta Style Pork & Pasta",
-            "image": "https://spoonacular.com/recipeImages/715537-312x231.jpg",
-            "imageType": "jpg"
-        }
-    ]}
-    return Response(code=200, status="Ok", message=json.dumps(recipes))
+    return Response(code=200, status="Ok", message=response.text)

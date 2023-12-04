@@ -1,12 +1,35 @@
 import { displayRecipes } from "./recipes.js"
 import { BASE_URL } from "./settings.js";
 
+
+let options = {
+    maxCalories: 500,
+    cuisineTypes: [],
+    timeToCook: 120
+}
+
+
+
 const searchForRecipes = async () => {
     hideFinalView();
 
-    await fetch(BASE_URL + '/recipes/search')
-        .then(response => response.json())
-        .then(data => displayRecipes(JSON.parse(data.message).results))
+    const request = {
+        "options": {
+            "search": "pasta",
+            "cuisine": null,
+            "max_time": options.timeToCook,
+            "max_calories": options.maxCalories 
+        }
+    }
+    await fetch(BASE_URL + '/recipes/search', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+    })
+    .then(response => response.json())
+    .then(data => displayRecipes(JSON.parse(data.message).results))
 }
 
 
@@ -29,10 +52,6 @@ const toggleOptionViews = (prevOption, newOption) => {
 let currentOptionIndex = 0;
 const optionsContainer = document.getElementById("option-container")?.children;
 
-let options = {
-    maxCalories: 1000,
-    cuisineTypes: []
-}
 
 
 const setTimeToCook = time => {

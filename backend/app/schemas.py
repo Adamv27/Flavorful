@@ -40,6 +40,17 @@ class RequestRecipe(BaseModel):
     recipe: RecipeSchema = Field(...)
 
 
+class SearchRecipeSchema(BaseModel):
+    search: Optional[str] = None
+    cuisine: Optional[str] = None
+    max_calories: Optional[int] = None
+    max_time: Optional[int] = None
+
+
+class RequestSearchRecipe(BaseModel):
+    options: SearchRecipeSchema = Field(...)
+
+
 class Response(BaseModel, Generic[T]):
     code: int
     status: str
