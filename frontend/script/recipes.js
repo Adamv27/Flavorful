@@ -113,8 +113,10 @@ export const displayRecipes = (recipes) => {
         });
 
         card.addEventListener("click", async e => {
-            if (e.target.classList.contains("save-button") || e.target.classList.contains("bookmark-image"))
+            if (e.target.classList.contains("save-button") || e.target.classList.contains("bookmark-image")) {
+                $('#modal' + recipe.id).modal('hide')
                 return
+            } 
             editModal(recipe.id);
         })
 
