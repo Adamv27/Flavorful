@@ -64,10 +64,20 @@ const removeRecipe = async recipeID => {
 
 const editModal = async (recipeID) => {
     let modal = document.getElementById("modal" + recipeID)
-    modal.querySelector(".modal-body").textContent = "TESTING!"
+    
+    let recipe_details = user.get_recipe_from_cache(recipeID)
+    if (recipe_details != null) {
+        modal.querySelector('.btn.visit').href = recipe_details.sourceUrl;
+        modal.querySelector('.modal-body').innerHTML = recipe_details.summary; 
+        return
+    }
 
     const url = URL + "/details/" + recipeID
     let response = await fetch(url);
+    if (response.status != 200)
+        return;
+    response = await response.json()
+    user.cache_recipe_details(recipeID, response)
 }
 
 
