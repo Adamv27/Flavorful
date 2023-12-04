@@ -17,8 +17,13 @@ const signup = async () => {
     fetch(url_with_content, {
         method: "POST"
     })
-    .then(response => response.json())
-    .then(data => console.log(data));
+    .then(response => {
+        if (response.code == 200) {
+            window.location= "../pages/login.html";
+        } else {
+            console.log(response.message);
+        }
+    }) 
 }
 
 

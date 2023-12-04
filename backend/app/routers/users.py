@@ -6,7 +6,7 @@ from app.exceptions import InvalidLoginError, UserRegistrationError
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import JSONResponse
-from app.schemas import Token, UserSchema, RegisterUserSchema
+from app.schemas import Token, UserSchema, RegisterUserSchema, Response
 from app.login import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user, verify_new_user, get_password_hash
 
 
@@ -52,4 +52,4 @@ async def register_new_user(
     new_user.password = get_password_hash(new_user.password)
     add_user(db, new_user)
 
-    return JSONResponse(content=f"Registered: {new_user.username} {new_user.password}")
+    return Response(code=200, status="Ok", message="Successfully created new user: " + new_user.username)
