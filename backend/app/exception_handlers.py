@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from app.exceptions import InvalidLoginError, RecipeDoesNotExistError, UserRegistrationError
 from sqlalchemy.exc import IntegrityError
-from app.schemas import Response
 
 
 def add_global_exception_handler(app: FastAPI):
@@ -31,8 +30,7 @@ def add_global_exception_handler(app: FastAPI):
 
     @app.exception_handler(UserRegistrationError)
     async def invalid_registration_handler(request, exc):
-        return Response(
-            code=409,
-            status="Conflict",
-            message="Failed to create user account"
+        return JSONResponse(
+            status_code=409,
+            content={"message": "Failed to create user account"}
         )
