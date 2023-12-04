@@ -18,8 +18,7 @@ const signup = async () => {
         method: "POST"
     })
     .then(response => {
-        if (response.code == 200) {
-            console.log("Success");
+        if (response.status == 200) {
             window.location= "../pages/login.html";
         } else {
             console.log(response);
