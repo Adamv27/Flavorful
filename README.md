@@ -165,15 +165,15 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Adamv27/WhatToEat.svg?style=for-the-badge
 [contributors-url]: https://github.com/Adamv27/WhatToEat/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Adamv27/WhatToEat.svg?style=for-the-badge
 [forks-url]: https://github.com/Adamv27/WhatToEat/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Adamv27/WhatToEat.svg?style=for-the-badge
 [stars-url]: https://github.com/Adamv27/WhatToEat/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Adamv27/WhatToEat.svg?style=for-the-badge
 [issues-url]: https://github.com/Adamv27/WhatToEat/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Adamv27/WhatToEat.svg?style=for-the-badge
 [license-url]: https://github.com/Adamv27/WhatToEat/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adam-vinch
