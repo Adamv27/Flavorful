@@ -16,7 +16,11 @@ export const user = {
     },
 
     get_recipe_from_cache(recipe_id) {
-        return JSON.parse(localStorage.getItem(recipe_id))
+        let details = localStorage.getItem(recipe_id)
+        details = JSON.parse(details);
+        if (typeof details == "string")
+            details = JSON.parse(details)
+        return details
     }
 }
 
