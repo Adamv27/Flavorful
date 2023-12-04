@@ -55,3 +55,8 @@
   width: 1rem;
 }
 
+
+.modal .btn.save {
+  background-color: var(--green);
+  color: white;
+}
