@@ -11,11 +11,13 @@ const load_recipes = async () => {
         await get_user_recipes(token)
 }
 
+// All recipes that are saved under the users account
+let allRecipes;
 
 const get_user_recipes = async (token) => {
     if (!token) return
-        
-     fetch(URL + "/saved", { 
+
+    fetch(URL + "/saved", { 
         method: "GET",
         headers: {
         'Accept': 'application/json',
@@ -23,11 +25,26 @@ const get_user_recipes = async (token) => {
     })
     .then(response => response.json())
     .then(data => {
+        allRecipes = data.recipes
+
         displayRecipes(data.recipes)
-        for (let recipe of data.recipes) {
+        data.recipes.forEach(recipe => {
             toggleSaveRecipeIcon(recipe.id);
-        }
+        })
     });
 }
 
-document.addEventListener("DOMContentLoaded", load_recipes, false);
+
+const searchForRecipe = searchName => {
+    const recipesToShow = allRecipes.filter((recipe) => recipe.title.includes(searchName));
+    recipesToShow.forEach(recipe => document.getElementById(recipe.id).style.display = "Flex")
+
+    const recipesToHide = allRecipes.filter(recipe => !recipesToShow.includes(recipe))
+    recipesToHide.forEach(recipe => document.getElementById(recipe.id).style.display = "None") 
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await load_recipes()
+    document.getElementById("recipe-input").addEventListener("keyup", (e) => {searchForRecipe(e.target.value)})
+}, false);
