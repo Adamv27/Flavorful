@@ -12,10 +12,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="frontend/images/flavorful-green.svg" alt="Logo" width="300">
   </a>
 
-  <h3 align="center">What To Eat</h3>
+  <h3 align="center">Flavorful</h3>
 
   <p align="center">
     A recipe app aimed to help users discover new recipes and save their existinig ones
@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Flavorful Screen Shot][product-screenshot]](https://github.com/Adamv27/WhatToEat/blob/main/frontend/images/mobile-view.png)
 
 This project is a full stack web app made for JMU's CS 343 Application Development class. 
 
