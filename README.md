@@ -126,10 +126,11 @@ exploree new recipes found on Spoonacular, save them to their account, and add t
 ## Roadmap
 
 - [x] Display recipe details on card click
+- [x] Search for saved recipes 
 - [x] Search for recipes based on queries
     - [X] Time
     - [X] Calories
-    - [ ] Cuisine
+    - [X] Cuisine
     - [ ] Advanced parameters
 - [ ] Add user account page
     - [ ] Export saved recipe data to JSON
