@@ -84,13 +84,14 @@ async def get_recipe_details(recipe_id: int):
 async def find_recipes(request: RequestSearchRecipe):
     options = request.options
 
-    query = f'query={options.search if options.search is not None else ""}&'
+    query = f'query={options.search}&' if options.search else ""
     cuisine = f'cuisine={options.cuisine}&' if options.cuisine else ""
-    time = f'maxReadyTime={options.max_time if options.max_time is not None else ""}&'
+    time = f'maxReadTime={options.max_time}&' if options.max_time else ""
     calories = f'maxCalories={options.max_calories}&' if options.max_calories else ""
+    search = query + cuisine + time + calories + 'number=50&addRecipeInformation=true&'
     
-    search = query + cuisine + time + calories
-    logger.info(search)
     spoonacular_url = BASE_URL + "/recipes/complexSearch?" + search + API_KEY_QUERY
     response = requests.get(spoonacular_url)
+
+    logger.info(response.text)
     return Response(code=200, status="Ok", message=response.text)
