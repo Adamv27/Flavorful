@@ -23,6 +23,10 @@ body {
   background-color: var(--dark-green);
 }
 
+.navbar-brand {
+  width: 15rem;
+}
+
 .navbar h1, .navbar .nav-link, .navbar-toggler-icon {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   color: var(--tan);
