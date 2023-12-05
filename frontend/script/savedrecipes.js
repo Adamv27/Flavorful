@@ -27,7 +27,14 @@ const get_user_recipes = async (token) => {
     .then(data => {
         allRecipes = data.recipes
 
-        displayRecipes(data.recipes)
+        const user_cached_recipes = []
+        allRecipes.forEach(recipe => {
+            let cached_recipe = user.get_recipe_from_cache(recipe.id)
+            cached_recipe.image = recipe.image
+            user_cached_recipes.push(cached_recipe) 
+        })
+
+        displayRecipes(user_cached_recipes)
         data.recipes.forEach(recipe => {
             toggleSaveRecipeIcon(recipe.id);
         })
