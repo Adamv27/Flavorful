@@ -23,6 +23,8 @@ const saveRecipe = async (recipe) => {
     const token = user.get_token()
     if (token == null) return false
     
+    user.cache_recipe_details(recipe.id, recipe)
+
     const saved_recipe = {
         id: recipe.id,
         user_id: null,
@@ -62,30 +64,15 @@ const removeRecipe = async recipeID => {
         document.getElementById(recipeID).remove()
 }
 
-const editModal = async (recipeID) => {
-    let modal = document.getElementById("modal" + recipeID)
-    
-    let recipe_details = user.get_recipe_from_cache(recipeID)
-    if (recipe_details != null) {
-        modal.querySelector('.btn.visit').href = recipe_details.sourceUrl;
-        modal.querySelector('.modal-body').innerHTML = recipe_details.summary; 
-        return
-    }
-
-    const url = URL + "/details/" + recipeID
-    let response = await fetch(url);
-    if (response.status != 200)
-        return;
-    response = await response.json()
-    user.cache_recipe_details(recipeID, response)
-}
-
 
 const buildModal = (recipe) => {
     const modal = document.getElementById("exampleModal").cloneNode(true);
     modal.id = "modal" + recipe.id;
+
+    modal.querySelector('.btn.visit').href = recipe.sourceUrl
+    modal.querySelector('.modal-body').innerHTML = recipe.summary;
     modal.querySelector('.modal-title').textContent = recipe.title;
-    modal.querySelector('.modal-body').textContent = recipe.id;
+
     return modal;
 }
 
@@ -113,11 +100,8 @@ export const displayRecipes = (recipes) => {
         });
 
         card.addEventListener("click", async e => {
-            if (e.target.classList.contains("save-button") || e.target.classList.contains("bookmark-image")) {
+            if (e.target.classList.contains("save-button") || e.target.classList.contains("bookmark-image"))
                 $('#modal' + recipe.id).modal('hide')
-                return
-            } 
-            editModal(recipe.id);
         })
 
         resultsContainer.appendChild(card);
