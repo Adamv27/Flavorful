@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Flavorful Screen Shot][product-screenshot]](https://github.com/Adamv27/WhatToEat/blob/main/frontend/images/mobile-view.png)
+[![Flavorful Screen Shot][product-screenshot]](https://github.com/Adamv27/WhatToEat/blob/main/frontend/)
 
 This project is a full stack web app made for JMU's CS 343 Application Development class. 
 
@@ -178,7 +178,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-url]: https://github.com/Adamv27/WhatToEat/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adam-vinch
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: frontend/images/mobile-view.png
 
 [FastAPI.com]: https://img.shields.io/badge/FastAPI-grey?style=for-the-badge&logo=fastapi
 [FastAPI-url]: https://fastapi.tiangolo.com/
