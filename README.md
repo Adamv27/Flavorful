@@ -11,28 +11,28 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/Adamv27/Flavorful">
     <img src="frontend/images/flavorful-green.svg" alt="Logo" width="300">
   </a>
 
   <h3 align="center">Flavorful</h3>
 
   <p align="center">
-    A recipe app aimed to help users discover new recipes and save their existinig ones
+    A recipe app aimed to help users discover new recipes and save their existing ones
     <br />
     <br />
     <a href="https://recipes.adamvinch.com">Live site</a>
     ·
-    <a href="https://github.com/adamv27/WhatToEat/issues">Report Bug</a>
+    <a href="https://github.com/adamv27/Flavorful/issues">Report Bug</a>
     ·
-    <a href="https://github.com/adamv27/WhatToEat/issues">Request Feature</a>
+    <a href="https://github.com/adamv27/Flavorful/issues">Request Feature</a>
   </p>
 </div>
 
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<details
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Flavorful Screen Shot][product-screenshot]](https://github.com/Adamv27/WhatToEat/blob/main/frontend/)
+[![Flavorful Screen Shot][product-screenshot]](https://github.com/Adamv27/Flavorful/blob/main/frontend/)
 
 This project is a full stack web app made for JMU's CS 343 Application Development class. 
 
@@ -94,7 +94,7 @@ exploree new recipes found on Spoonacular, save them to their account, and add t
 2. Set up a free [Supabase](https://supabase.com) project
 3. Clone the repo
    ```sh
-   git clone https://github.com/Adamv27/WhatToEat.git
+   git clone https://github.com/Adamv27/Flavorful.git
    ```  
 4. Create .env file from root of repo
    ```sh
@@ -116,7 +116,7 @@ exploree new recipes found on Spoonacular, save them to their account, and add t
    ```sh
    docker compose up --build
    ```
-9. Front end is vanilla JavaScript and can be ran by opening `WhatToEat/frontend/index.html` in a web browser
+9. Front end is vanilla JavaScript and can be ran by opening `Flavorful/frontend/index.html` in a web browser
     or using [Live Server](https://www.npmjs.com/package/live-server)
    
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -166,16 +166,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/Adamv27/WhatToEat.svg?style=for-the-badge
-[contributors-url]: https://github.com/Adamv27/WhatToEat/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Adamv27/WhatToEat.svg?style=for-the-badge
-[forks-url]: https://github.com/Adamv27/WhatToEat/network/members
-[stars-shield]: https://img.shields.io/github/stars/Adamv27/WhatToEat.svg?style=for-the-badge
-[stars-url]: https://github.com/Adamv27/WhatToEat/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Adamv27/WhatToEat.svg?style=for-the-badge
-[issues-url]: https://github.com/Adamv27/WhatToEat/issues
-[license-shield]: https://img.shields.io/github/license/Adamv27/WhatToEat.svg?style=for-the-badge
-[license-url]: https://github.com/Adamv27/WhatToEat/blob/main/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Adamv27/Flavorful.svg?style=for-the-badge
+[contributors-url]: https://github.com/Adamv27/Flavorful/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Adamv27/Flavorful.svg?style=for-the-badge
+[forks-url]: https://github.com/Adamv27/Flavorful/network/members
+[stars-shield]: https://img.shields.io/github/stars/Adamv27/Flavorful.svg?style=for-the-badge
+[stars-url]: https://github.com/Adamv27/Flavorful/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Adamv27/Flavorful.svg?style=for-the-badge
+[issues-url]: https://github.com/Adamv27/Flavorful/issues
+[license-shield]: https://img.shields.io/github/license/Adamv27/Flavorful.svg?style=for-the-badge
+[license-url]: https://github.com/Adamv27/Flavorful/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adam-vinch
 [product-screenshot]: frontend/images/mobile-view.png
