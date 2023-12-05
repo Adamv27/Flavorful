@@ -1,0 +1,39 @@
+#carouselExampleIndicators {
+  width: 20rem;
+}
+
+.carousel-indicators {
+  margin: 1rem;
+  position: relative;
+  bottom: 0px;
+}
+
+.carousel-indicators > li {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+
+.carousel-indicators > li.active {
+  width: 2rem;
+  border-radius: 16px;
+  background-color: var(--green);
+}
+
+
+.content-container.side {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-display {
+  width: 20rem;
+  height: 20rem;
+  background-color: var(--green);
+  color: white;
+  border-radius: 16px;
+}
