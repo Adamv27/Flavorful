@@ -1,47 +1,86 @@
+.carousel-indicators {
+  margin: 1rem;
+  position: relative;
+  bottom: 0px;
+}
+
+.carousel-indicators > li {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+
+.carousel-indicators > li.active {
+  width: 2rem;
+  border-radius: 16px;
+  background-color: var(--green);
+}
+
+
+.content-container.side {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-display {
+  width: 12rem;
+  height: 20rem;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--green);
+}
+
+.recipe-display > img {
+  border-radius: 16px 16px 0 0px;
+  width: 100%;
+  height: 10rem;
+}
+
+.bottom-content{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-content p {
+  margin: 0;
+}
+
+
+.recipe-link {
+  margin-top: 0.75rem;
+  padding: 0.25rem;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--green);
+  text-decoration: none;
+  text-align: center;
+}
+
+.bottom-content > small {
+  display: flex;
+
+  margin-left: 1rem;
+}
+
+.bottom-content > small > img {
+  margin-right: 0.5rem;
+}
+
+
 @media (min-width: 900px) {
   #carouselExampleIndicators {
     display: flex;
-    width: 20rem;
+    width: 12rem;
   }
 
   .carousel-indicators {
     display: flex;
-  }
-
-  .carousel-indicators {
-    margin: 1rem;
-    position: relative;
-    bottom: 0px;
-  }
-
-  .carousel-indicators > li {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: lightgray;
-  }
-
-  .carousel-indicators > li.active {
-    width: 2rem;
-    border-radius: 16px;
-    background-color: var(--green);
-  }
-
-
-  .content-container.side {
-    width: 25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .recipe-display {
-    width: 20rem;
-    height: 20rem;
-    background-color: var(--green);
-    color: white;
-    border-radius: 16px;
   }
 }
 
