@@ -30,9 +30,10 @@ const get_user_recipes = async (token) => {
         const user_cached_recipes = []
         allRecipes.forEach(recipe => {
             let cached_recipe = user.get_recipe_from_cache(recipe.id)
-            if (cached_recipe == null) continue
-            cached_recipe.image = recipe.image
-            user_cached_recipes.push(cached_recipe) 
+            if (cached_recipe != null) {
+                cached_recipe.image = recipe.image
+                user_cached_recipes.push(cached_recipe) 
+            }
         })
 
         displayRecipes(user_cached_recipes)
