@@ -37,7 +37,7 @@ const get_user_recipes = async (token) => {
         })
 
         displayRecipes(user_cached_recipes)
-        data.recipes.forEach(recipe => {
+        user_cached_recipes.forEach(recipe => {
             toggleSaveRecipeIcon(recipe.id);
         })
     });
